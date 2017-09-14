@@ -3,4 +3,4 @@ layout: default
 ---
 
 # Hello Carousel
-[back](./)
+[back]({{ site.url }}/)
