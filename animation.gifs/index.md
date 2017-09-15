@@ -6,6 +6,9 @@ layout: default
 [back]({{ site.url }}/)
 
 ## Description
+Controls gif animations
+
+- Play animation
 
 ## Authors
 - Paul Stodolak / Jacknife Design

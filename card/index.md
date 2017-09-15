@@ -6,6 +6,7 @@ layout: default
 [back]({{ site.url }}/)
 
 ## Description
+Cards that maintain aspect ratio and manage overflow
 
 ## Authors
 - Paul Stodolak / Jacknife Design
