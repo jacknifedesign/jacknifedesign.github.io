@@ -3,6 +3,6 @@ layout: default
 ---
 
 # Hello World
-[Carousel](carousel)
-[Modal](modal)
-[Dynamic Modal](modal.dynamic)
+- [Carousel](carousel)
+- [Modal](modal)
+- [Dynamic Modal](modal.dynamic)
