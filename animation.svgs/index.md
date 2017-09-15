@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hello Dynamic Modal
+# Hello SVG Animation
 [back]({{ site.url }}/)
 
 ## Description

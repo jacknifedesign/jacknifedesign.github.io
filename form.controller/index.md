@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hello Dynamic Modal
+# Hello Form Controller
 [back]({{ site.url }}/)
 
 ## Description

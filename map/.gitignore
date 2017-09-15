@@ -1,0 +1,10 @@
+# Compiled files
+src/js/_uglify/*
+js/*
+!js/vendor
+!js/vendor/*.js
+!js/vendor/**/*.js
+css/*
+!css/vendor
+!css/vendor/*.css
+!css/vendor/**/*.css

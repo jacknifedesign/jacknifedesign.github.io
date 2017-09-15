@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hello Dynamic Modal
+# Hello Hero Carousel
 [back]({{ site.url }}/)
 
 ## Description

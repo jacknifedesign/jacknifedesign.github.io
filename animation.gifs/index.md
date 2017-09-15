@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hello Dynamic Modal
+# Hello Gif Animation
 [back]({{ site.url }}/)
 
 ## Description

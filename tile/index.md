@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hello Dynamic Modal
+# Hello Tile
 [back]({{ site.url }}/)
 
 ## Description

@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hello Dynamic Modal
+# Hello Card
 [back]({{ site.url }}/)
 
 ## Description

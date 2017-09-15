@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hello Dynamic Modal
+# Hello Video Controls
 [back]({{ site.url }}/)
 
 ## Description

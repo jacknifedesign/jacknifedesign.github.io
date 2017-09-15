@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hello Dynamic Modal
+# Hello Map
 [back]({{ site.url }}/)
 
 ## Description

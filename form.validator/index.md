@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hello Dynamic Modal
+# Hello Form Validator
 [back]({{ site.url }}/)
 
 ## Description

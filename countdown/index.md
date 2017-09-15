@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hello Dynamic Modal
+# Hello Countdown
 [back]({{ site.url }}/)
 
 ## Description

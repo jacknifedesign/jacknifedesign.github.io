@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hello Dynamic Modal
+# Hello Table Sort
 [back]({{ site.url }}/)
 
 ## Description

@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hello Dynamic Modal
+# Hello Gallery Modal
 [back]({{ site.url }}/)
 
 ## Description

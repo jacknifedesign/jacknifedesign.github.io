@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hello Dynamic Modal
+# Hello Accordion
 [back]({{ site.url }}/)
 
 ## Description
