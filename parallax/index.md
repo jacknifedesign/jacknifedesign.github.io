@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hello Gallery Modal
+# Hello Parallax
 [back]({{ site.url }}/)
 
 ## Description

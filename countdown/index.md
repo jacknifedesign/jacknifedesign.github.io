@@ -8,11 +8,19 @@ layout: default
 ## Description
 
 ## Authors
-- Paul Stodolak / Jacknife
+- Paul Stodolak / Jacknife Design
+
+## Dependancies
+
+## Options
 
 ## Code
 
 ## Examples
+
+## Known Issues
+
+## Browser Support
 
 ## License
 

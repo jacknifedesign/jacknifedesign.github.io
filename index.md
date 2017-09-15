@@ -50,6 +50,9 @@ layout: default
 ### Navigations
 - [Navigation](navigation)
 
+### Parallax
+- [Parallax](parallax)
+
 ### Preloaders
 - [Preload](preload)
 - [Preload Item](preload.item)
@@ -69,6 +72,6 @@ layout: default
 - [Video Controls](video.controls)
 
 ## Credits
-- Paul Stodolak / Jacknife
+- Paul Stodolak / Jacknife Design
 
 ## License
