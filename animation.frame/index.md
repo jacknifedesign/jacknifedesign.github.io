@@ -22,6 +22,7 @@ Controls Frame animations
 - Paul Stodolak / Jacknife Design
 
 ## Dependancies
+- jQuery
 
 ## Options
 

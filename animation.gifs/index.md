@@ -14,6 +14,7 @@ Controls gif animations
 - Paul Stodolak / Jacknife Design
 
 ## Dependancies
+- jQuery
 
 ## Options
 

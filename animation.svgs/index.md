@@ -22,6 +22,7 @@ Control SVG animations
 - Paul Stodolak / Jacknife Design
 
 ## Dependancies
+- jQuery
 
 ## Options
 
