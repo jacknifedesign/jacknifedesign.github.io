@@ -6,11 +6,18 @@ layout: default
 [back]({{ site.url }}/)
 
 ## Description
+- Back button
+- Forward button
+- Dot navigation
+- Autoplay option
+- Keyboard control, on focus
+- Responsive
 
 ## Authors
 - Paul Stodolak / Jacknife Design
 
 ## Dependancies
+- jQuery
 
 ## Options
 
