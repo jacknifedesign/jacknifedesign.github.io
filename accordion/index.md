@@ -26,7 +26,7 @@ Can open or close Accordions inside or outside of the element structure of the A
 
 ## Code
 Tayco App JS
-```jquery
+```javascript
 $('.accordion').each(function() {
 	var Accordion = new TAYCO.Accordion($(this));
 	Accordion.init();
@@ -34,7 +34,7 @@ $('.accordion').each(function() {
 });
 ```
 Tayco JS
-```jquery
+```javascript
 var TAYCO = TAYCO || {};
 
 (function( $ ) {
