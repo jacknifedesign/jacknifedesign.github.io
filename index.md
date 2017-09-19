@@ -26,10 +26,6 @@ layout: default
 - [Countdown](countdown)
 - [Circle Countdown](countdown.circle)
 
-### Heros
-- [Hero](hero)
-- [Video Hero](hero.video)
-
 ### Carousels
 - [Carousel](carousel)
 - [Gallery Carousel](carousel.gallery)
@@ -38,6 +34,10 @@ layout: default
 ### Forms
 - [Form Controller](form.controller)
 - [Form Validator](form.validator)
+
+### Heros
+- [Hero](hero)
+- [Video Hero](hero.video)
 
 ### Maps
 - [Map](map)
