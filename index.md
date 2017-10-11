@@ -7,6 +7,8 @@ layout: default
 ## Introduction
 
 ## General Usage
+Run `npm install` in the desired folder.
+Run `grunt` on the src folder to generate the dist files.
 
 ## Object Index
 ### Accordions
