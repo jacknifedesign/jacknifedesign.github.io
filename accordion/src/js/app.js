@@ -11,12 +11,14 @@ var JACKNIFE = JACKNIFE || {};
 			$(this).data('Accordion', Accordion);
 		});
 
+		// Global control to open all Accordions
 		$('[data-acc-all-open').each(function() {
 			$(this).on('click', function() {
 				$(window).trigger('acc-all-open');
 			});
 		});
 
+		// Global control to close all Accordions
 		$('[data-acc-all-close').each(function() {
 			$(this).on('click', function() {
 				$(window).trigger('acc-all-close');
