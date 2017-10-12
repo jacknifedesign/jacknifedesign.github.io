@@ -11,15 +11,29 @@ var JACKNIFE = JACKNIFE || {};
 		// Public Functions
 		this.init = function() {
 			// Apply listeners
-			$trigger.on('click', _toggleOpen);
+			$trigger.on('click', _toggle);
+			$(window).on('acc-all-open', _open);
+			$(window).on('acc-all-close', _close);
 			return;
 		}
 
 		// Private Functions
-		var _toggleOpen = function(e) {
+		var _toggle = function(e) {
 			e.preventDefault();
 
 			$el.toggleClass('active');
+		}
+
+		var _open = function(e) {
+			e.preventDefault();
+
+			$el.addClass('active');
+		}
+
+		var _close = function(e) {
+			e.preventDefault();
+
+			$el.removeClass('active');
 		}
 	}
 })( jQuery );

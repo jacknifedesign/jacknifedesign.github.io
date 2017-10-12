@@ -13,8 +13,6 @@ Can open or close Accordions inside or outside of the element structure of the A
 - Toggle Accordion
 - Open All Accordions
 - Close All Accordions
-- Trigger events after Open
-- Trigger events after Close
 
 ## Authors
 - Paul Stodolak / Jacknife Design
@@ -25,13 +23,23 @@ Can open or close Accordions inside or outside of the element structure of the A
 ## Options
 
 ## Code
-Tayco App JS
+App JS
 ```javascript
-$('.accordion').each(function() {
-	var Accordion = new TAYCO.Accordion($(this));
-	Accordion.init();
-	$(this).data('Accordion', Accordion);
-});
+var JACKNIFE = JACKNIFE || {};
+
+(function( $ ) {
+	$( document ).ready(function() {
+
+		// Initialize Accordions
+		$('.accordion').each(function() {
+			var Accordion = new JACKNIFE.Accordion($(this));
+			Accordion.init();
+			// Store Object in Element Data for later reference
+			$(this).data('Accordion', Accordion);
+		});
+
+	});
+})( jQuery );
 ```
 
 Tayco JS
