@@ -2,6 +2,10 @@ var JACKNIFE = JACKNIFE || {};
 
 (function( $ ) {
 	$( document ).ready(function() {
-		console.log('ready!');
+		$('.accordion').each(function() {
+			var Accordion = new JACKNIFE.Accordion($(this));
+			Accordion.init();
+			$(this).data('Accordion', Accordion);
+		});
 	});
 })( jQuery );

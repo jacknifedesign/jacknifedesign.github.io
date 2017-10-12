@@ -33,6 +33,7 @@ $('.accordion').each(function() {
 	$(this).data('Accordion', Accordion);
 });
 ```
+
 Tayco JS
 ```javascript
 var TAYCO = TAYCO || {};
@@ -61,6 +62,7 @@ var TAYCO = TAYCO || {};
 	}
 })( jQuery );
 ```
+
 Tayco HTML
 ```html
 <div class="accordion">
@@ -72,6 +74,7 @@ Tayco HTML
 	</div>
 </div>
 ```
+
 Tayco SASS
 ```sass
 .accordion {
@@ -89,6 +92,7 @@ Tayco SASS
 	}
 }
 ```
+
 eShipper JS
 ```var JACKNIFE = JACKNIFE || {};
 
@@ -177,6 +181,7 @@ eShipper JS
 	}
 })( jQuery );
 ```
+
 ## Examples
 - [Example 01](examples/01)
 
