@@ -175,7 +175,6 @@ eShipper JS
 			}
 		}
 	}
-
 })( jQuery );
 ```
 ## Examples
