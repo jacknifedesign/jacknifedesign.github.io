@@ -5,12 +5,9 @@
 		@extend %clearfix;
 		overflow: hidden;
 		position: relative;
-		top: 50%;
-		right: 50%;
 		width: 100%;
 		height: 100%;
 		box-sizing: border-box;
-		@include transform(translate(50%, -50%));
 		.card-img {
 			overflow: hidden;
 		}
@@ -21,7 +18,8 @@
 		}
 		.card-img {
 			img {
-				width: auto;
+				width: 100%;
+				height: auto;
 				display: block;
 			}
 		}
