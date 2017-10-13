@@ -1,6 +1,6 @@
 .card {
 	position: relative;
-	z-index: 1;
+	padding: 0 0.5rem;
 	.card-content {
 		@extend %clearfix;
 		overflow: hidden;
@@ -20,14 +20,9 @@
 			text-align: center;
 		}
 		.card-img {
-			padding-top: 66.66%;
 			img {
 				width: auto;
 				display: block;
-				position: absolute;
-				bottom: 0;
-				right: 50%;
-				@include transform(translate(50%, 0));
 			}
 		}
 	}
