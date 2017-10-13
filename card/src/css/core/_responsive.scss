@@ -4,6 +4,7 @@
 		.col {
 			display: block;
 			width: 50%;
+			float: left;
 		}
 	}
 }
@@ -12,6 +13,7 @@
 	.col-wrap {
 		.col {
 			width: 100%;
+			float: none;
 		}
 	}
 }
