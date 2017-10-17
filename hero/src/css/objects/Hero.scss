@@ -7,7 +7,6 @@
 		display: block;
 		width: 100%;
 		height: auto;
-		opacity: 0.9;
 	}
 	.container {
 		position: absolute;
@@ -18,9 +17,12 @@
 		@include transform(translate(50%, -50%));
 	}
 	.banner-copy {
+		padding: 0 1.25rem;
+		box-sizing: border-box;
 		position: absolute;
 		top: 50%;
-		@include transform(translate(0, -50%));
+		right: 50%;
+		@include transform(translate(50%, -50%));
 		h1, h2 {
 			line-height: 1;
 			clear: both;
@@ -32,10 +34,10 @@
 #Hero.banner {
 	.banner-copy {
 		h1 {
-			font-size: 7.5rem;
+			font-size: 4.5rem;
 		}
 		h2 {
-			font-size: 6.25rem;
+			font-size: 3.25rem;
 		}
 	}
 }
