@@ -81,7 +81,7 @@ HTML
 	</div>
 </div>
 ```
-Tayco CSS
+CSS
 ```sass
 .col-wrap {
 	width: 100%;

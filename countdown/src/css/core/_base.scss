@@ -52,6 +52,7 @@ hr {
 .desktop-only {
 	display: block;
 }
+
 .mobile-only {
 	display: none;
 }
@@ -69,4 +70,16 @@ hr {
 
 .clearfix {
 	@extend %clearfix;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-left {
+	text-align: left;
 }
