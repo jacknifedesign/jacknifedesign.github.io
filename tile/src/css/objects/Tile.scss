@@ -1,6 +1,14 @@
+.col-wrap {
+	.col:first-child {
+		.tile-wrap {
+			float: right;
+		}
+	}
+}
+
 .tile-wrap {
 	width: 100%;
-	max-width: $max-width / 2;
+	max-width: 500px;
 	height: 100%;
 }
 
