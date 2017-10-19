@@ -13,10 +13,10 @@ layout: default
 ## Dependancies
 
 ## Options
-Tayco Hero
+HTML
 ```html
 <section id="Hero" class="banner">
-	<img src="../../../images/1920-1280_01.jpg" alt="" />
+	<img src="../../../images/1920-960_01.jpg" alt="" />
 	<div class="container">
 		<div class="banner-copy">
 			<h1>Sollicitudin tempor id eu</h1>
@@ -25,7 +25,7 @@ Tayco Hero
 	</div>
 </section>
 ```
-Tayco CSS
+CSS
 ```sass
 .banner {
 	position: relative;
