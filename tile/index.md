@@ -19,7 +19,7 @@ CSS
 ```sass
 .tile-wrap {
 	width: 100%;
-	max-width: $max-width / 2;
+	max-width: 500px;
 	height: 100%;
 }
 
@@ -110,6 +110,7 @@ HTML
 - [Example 01](examples/01)
 
 ## Known Issues
+- Creates a subpixel at certain sizes
 
 ## Browser Support
 

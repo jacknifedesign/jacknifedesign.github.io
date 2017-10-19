@@ -18,16 +18,9 @@
 	position: relative;
 	overflow: hidden;
 	box-sizing: border-box;
-	padding-top: 50%;
 	img {
 		display: block;
 		width: 100%;
 		height: auto;
-		position: absolute;
-		top: 0;
-		left: 0;
-	}
-	&:only-child {
-		padding-top: 100%;
 	}
 }
