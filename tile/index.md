@@ -110,7 +110,9 @@ HTML
 - [Example 01](examples/01)
 
 ## Known Issues
-- Creates a subpixel at certain sizes
+- Creates a subpixel at certain sizes (Add JS from Impact Kitchen to even the columns)
+- Doesn't include examples with text over image (Add from Impact Kitchen)
+- Doesn't include text only tiles
 
 ## Browser Support
 
