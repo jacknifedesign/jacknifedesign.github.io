@@ -29,6 +29,11 @@ CSS
 	position: relative;
 	overflow: hidden;
 	box-sizing: border-box;
+	img {
+		display: block;
+		width: 100%;
+		height: auto;
+	}
 }
 
 @media screen and (max-width: 500px) {
