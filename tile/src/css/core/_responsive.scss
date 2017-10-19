@@ -1,8 +1,9 @@
 @media screen and (max-width: 500px) {
 	.col-wrap {
+		display: block;
 		.col {
+			display: block;
 			width: 100%;
-			float: none;
 		}
 	}
 }
