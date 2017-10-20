@@ -17,39 +17,24 @@ layout: default
 ## Code
 Jacknife CSS
 ```sass
-.full-width-gallery {
-	width:100%;
-	.full-width-image,
-	.full-width-video,
-	.full-width-embed {
-		margin-bottom: 10px;
-		&:last-child {
-			margin-bottom: 0;
-		}
-		p {
-			margin: 0;
-		}
-	}
-	img,
-	video {
-		width:100%;
-		height:auto;
-	}
-	video {
-		display: block;
-	}
+video {
+	width: 100%;
+	height: auto;
+	display: block;
 }
 ```
-Jacknife HTML
+HTML
 ```html
-<div class="full-width-video">
-	<video loop="" muted="" autoplay="" poster="https://jacknifedesign.com/wp-content/uploads/2017/07/Tayco_Mockup_HD10_1150.jpg">
-		<source src="https://jacknifedesign.com/wp-content/uploads/2017/07/Tayco_Mockup_HD10_1150.webm" type="video/webm">
-		<source src="https://jacknifedesign.com/wp-content/uploads/2017/07/Tayco_Mockup_HD10_1150.mp4" type="video/mp4">
+<section>
+	<video loop="" muted="" autoplay="" poster="../../../images/1920-1080_01.jpg">
+		<source src="../../../videos/1920-1080.webm" type="video/webm">
+		<source src="../../../videos/1920-1080.mp4" type="video/mp4">
 	</video>
-</div>
+</section>
 ```
+
 ## Examples
+- [Example 01](examples/01)
 
 ## Known Issues
 
