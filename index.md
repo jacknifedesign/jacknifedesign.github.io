@@ -40,7 +40,6 @@ Run `grunt` on the src folder to generate the dist files.
 
 ### Heros
 - [Hero](hero)
-- [Video Hero](hero.video)
 
 ### Maps
 - [Map](map)
