@@ -13,7 +13,7 @@ layout: default
 ## Dependancies
 
 ## Options
-HTML
+Standard HTML
 ```html
 <section id="Hero" class="banner">
 	<img src="../../../images/1920-960_01.jpg" alt="" />
@@ -24,7 +24,9 @@ HTML
 		</div>
 	</div>
 </section>
-
+```
+Video HTML
+```html
 <section id="Hero" class="banner">
 	<video loop="" muted="" autoplay="" poster="../../../images/1920-1080_01.jpg">
 		<source src="../../../videos/1920-1080.webm" type="video/webm">
