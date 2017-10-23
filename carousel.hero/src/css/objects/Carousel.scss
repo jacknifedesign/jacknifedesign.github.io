@@ -46,6 +46,10 @@
 			&:last-child {
 				margin-right: 0;
 			}
+			&:hover {
+				cursor: pointer;
+			}
+			&:hover,
 			&.active {
 				background-color: $white;
 			}
