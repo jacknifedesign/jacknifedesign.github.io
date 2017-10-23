@@ -22,16 +22,25 @@ var JACKNIFE = JACKNIFE || {};
 		var _nav_click = function(e) {
 			e.preventDefault();
 
-			target = $(this).data('slide');
+			var target = $(this).data('slide');
 			_nav_to(target);
 		}
 
 		var _nav_to = function(target) {
 			$('[data-slide]', $el).removeClass('active');
-			$target = $('[data-slide="' + target + '"]', $el);
+			var $target = $('[data-slide="' + target + '"]', $el);
 			$target.addClass('active');
+			if ($('video', $el).length) {
+				var $videos = $('video', $el).get(0);
+				$videos.each(function() {
+					var $video = $(this);
+					if (!$video.paused) {
+						$video.pause();
+					}
+				});
+			}
 			if ($('video', $target).length) {
-				$video = $('video', $target).get(0);
+				var $video = $('video', $target).get(0);
 				if ($video.paused) {
 					$video.play();
 				}
