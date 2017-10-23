@@ -31,9 +31,9 @@ var JACKNIFE = JACKNIFE || {};
 			var $target = $('[data-slide="' + target + '"]', $el);
 			$target.addClass('active');
 			if ($('video', $el).length) {
-				var $videos = $('video', $el).get(0);
+				var $videos = $('video', $el);
 				$videos.each(function() {
-					var $video = $(this);
+					var $video = $(this).get(0);
 					if (!$video.paused) {
 						$video.pause();
 					}
