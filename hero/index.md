@@ -16,7 +16,9 @@ layout: default
 Standard HTML
 ```html
 <section id="Hero" class="banner">
-	<img src="../../../images/1920-960_01.jpg" alt="" />
+	<div class="banner-bg">
+		<img src="../../../images/1920-960_01.jpg" alt="" />
+	</div>
 	<div class="container">
 		<div class="banner-copy">
 			<h1>Sollicitudin tempor id eu</h1>
@@ -28,10 +30,12 @@ Standard HTML
 Video HTML
 ```html
 <section id="Hero" class="banner">
-	<video loop="" muted="" autoplay="" poster="../../../images/1920-1080_01.jpg">
-		<source src="../../../videos/1920-1080.webm" type="video/webm">
-		<source src="../../../videos/1920-1080.mp4" type="video/mp4">
-	</video>
+	<div class="banner-bg">
+		<video loop="" muted="" autoplay="" poster="../../../images/1920-1080_01.jpg">
+			<source src="../../../videos/1920-1080.webm" type="video/webm">
+			<source src="../../../videos/1920-1080.mp4" type="video/mp4">
+		</video>
+	</div>
 	<div class="container">
 		<div class="banner-copy">
 			<h1>Sollicitudin tempor id eu</h1>
@@ -47,12 +51,6 @@ CSS
 	background-color: $black;
 	color: $white;
 	padding: 0;
-	img,
-	video {
-		display: block;
-		width: 100%;
-		height: auto;
-	}
 	.container {
 		position: absolute;
 		top: 50%;
@@ -60,6 +58,14 @@ CSS
 		width: 100%;
 		height: 100%;
 		@include transform(translate(50%, -50%));
+	}
+	.banner-bg {
+		img,
+		video {
+			display: block;
+			width: 100%;
+			height: auto;
+		}
 	}
 	.banner-copy {
 		padding: 0 1.25rem;
