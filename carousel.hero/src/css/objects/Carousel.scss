@@ -4,19 +4,24 @@
 	padding: 56.25% 0 0 0;
 	width: 100%;
 	height: 0;
+	overflow: hidden;
 	.carousel-slide {
-		display: block;
-		width: 100%;
+		display: none;
 		position: absolute;
+		width: 100%;
+		height: 100%;
 		top: 50%;
 		right: 50%;
 		@include transform(translate(50%, -50%));
+		&.active {
+			display: block;
+		}
 		.banner-bg {
 			position: absolute;
-			top: 50%;
-			right: 50%;
 			width: 100%;
 			height: 100%;
+			top: 50%;
+			right: 50%;
 			@include transform(translate(50%, -50%));
 		}
 	}
