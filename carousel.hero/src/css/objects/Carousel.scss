@@ -1,0 +1,15 @@
+.carousel {
+	background: $black;
+	color: $white;
+	padding: 0;
+	width: 100%;
+	.carousel-slide {
+		padding-top: 56.25%;
+		display: block;
+		width: 100%;
+		position: absolute;
+		top: 50%;
+		right: 50%;
+		@include transform(translate(50%, -50%));
+	}
+}

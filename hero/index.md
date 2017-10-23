@@ -2,7 +2,7 @@
 layout: default
 ---
 
-# Hello Hero
+# Hello Hero Banner
 [back]({{ site.url }}/)
 
 ## Description

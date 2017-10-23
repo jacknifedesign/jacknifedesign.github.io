@@ -39,7 +39,7 @@ Run `grunt` on the src folder to generate the dist files.
 - [Form Validator](form.validator)
 
 ### Heros
-- [Hero](hero)
+- [Hero Banner](hero)
 
 ### Maps
 - [Map](map)
