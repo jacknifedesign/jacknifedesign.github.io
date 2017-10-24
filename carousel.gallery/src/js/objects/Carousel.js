@@ -106,14 +106,12 @@ var JACKNIFE = JACKNIFE || {};
 		}
 
 		var _resize = function(e) {
-			var thumb_width    = $thumb.width() + 16;
+			var thumb_width    = $thumb.width();
 			var target_width   = thumb_width * $thumb.length;
 			var carousel_width = $navigation.width();
 			var thumbs_width   = $thumbs.width();
 			var distance       = carousel_width * index;
 			var content_width  = $el.width() * $thumb.length;
-
-			$images.width(content_width / $thumb.length);
 
 			limit = target_width / $navigation.width();
 			$thumbs.width(target_width);
