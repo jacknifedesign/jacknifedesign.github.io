@@ -20,54 +20,60 @@ layout: default
 ## Code
 HTML
 ```html
-<ul class="carousel-slides">
-	<li class="active" data-slide="0">
-		<div class="banner-bg">
-			<video loop="" muted="" autoplay="" poster="../../../images/1920-1080_01.jpg">
-				<source src="../../../videos/1920-1080.webm" type="video/webm">
-				<source src="../../../videos/1920-1080.mp4" type="video/mp4">
-			</video>
-		</div>
-		<div class="container">
-			<div class="banner-copy">
-				<h1>Sollicitudin tempor id eu</h1>
-				<h2>Risus in hendrerit gravida</h2>
-			</div>
-		</div>
-	</li>
-	<li data-slide="1">
-		<div class="banner-bg">
-			<img src="../../../images/1920-1080_02.jpg" alt="" />
-		</div>
-		<div class="container">
-			<div class="banner-copy">
-				<h2>Pellentesque adipiscing commodo elit</h2>
-				<h3>In egestas erat imperdiet</h3>
-			</div>
-		</div>
-	</li>
-	<li data-slide="2">
-		<div class="banner-bg">
-			<img src="../../../images/1920-1080_03.jpg" alt="" />
-		</div>
-		<div class="container text-center">
-			<div class="banner-copy">
-				<h2>Sit amet massa vitae</h2>
-			</div>
-		</div>
-	</li>
-	<li data-slide="3">
-		<div class="banner-bg">
-			<img src="../../../images/1920-1080_04.jpg" alt="" />
-		</div>
-	</li>
-</ul>
-<ul class="carousel-navigation">
-	<li class="active" data-slide="0"><span class="sr-only">First slide</span></li>
-	<li data-slide="1"><span class="sr-only">Second slide</span></li>
-	<li data-slide="2"><span class="sr-only">Third slide</span></li>
-	<li data-slide="3"><span class="sr-only">Forth slide</span></li>
-</ul>
+<section id="Hero" class="carousel banner">
+	<div class="carousel-slides">
+		<ul>
+			<li class="active" data-slide="0">
+				<div class="banner-bg">
+					<video loop="" muted="" autoplay="" poster="../../../images/1920-1080_01.jpg">
+						<source src="../../../videos/1920-1080.webm" type="video/webm">
+						<source src="../../../videos/1920-1080.mp4" type="video/mp4">
+					</video>
+				</div>
+				<div class="container">
+					<div class="banner-copy">
+						<h1>Sollicitudin tempor id eu</h1>
+						<h2>Risus in hendrerit gravida</h2>
+					</div>
+				</div>
+			</li>
+			<li data-slide="1">
+				<div class="banner-bg">
+					<img src="../../../images/1920-1080_02.jpg" alt="" />
+				</div>
+				<div class="container">
+					<div class="banner-copy">
+						<h2>Pellentesque adipiscing commodo elit</h2>
+						<h3>In egestas erat imperdiet</h3>
+					</div>
+				</div>
+			</li>
+			<li data-slide="2">
+				<div class="banner-bg">
+					<img src="../../../images/1920-1080_03.jpg" alt="" />
+				</div>
+				<div class="container text-center">
+					<div class="banner-copy">
+						<h2>Sit amet massa vitae</h2>
+					</div>
+				</div>
+			</li>
+			<li data-slide="3">
+				<div class="banner-bg">
+					<img src="../../../images/1920-1080_04.jpg" alt="" />
+				</div>
+			</li>
+		</ul>
+	</div>
+	<div class="carousel-navigation">
+		<ul>
+			<li class="active" data-slide="0"><span class="sr-only">First slide</span></li>
+			<li data-slide="1"><span class="sr-only">Second slide</span></li>
+			<li data-slide="2"><span class="sr-only">Third slide</span></li>
+			<li data-slide="3"><span class="sr-only">Forth slide</span></li>
+		</ul>
+	</div>
+</section>
 ```
 JS
 ```javascript
