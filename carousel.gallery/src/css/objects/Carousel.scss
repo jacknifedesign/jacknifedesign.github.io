@@ -1,6 +1,7 @@
 .carousel {
 	ul {
 		list-style-type: none;
+		padding: 0;
 	}
 	.carousel-slides {
 		background: $black;
@@ -48,6 +49,22 @@
 			&:hover {
 				cursor: pointer;
 			}
+		}
+		.gallery-prev,
+		.gallery-next {
+			width: 35px;
+			height: 75px;
+			position: absolute;
+			top: 50%;
+			@include transform(translate(0, -50%));
+		}
+		.gallery-prev {
+			left: 0;
+			//background-image: url(../images/utility/gallery-prev.png);
+		}
+		.gallery-next {
+			right: 0;
+			//background-image: url(../images/utility/gallery-next.png);
 		}
 	}
 	.carousel-thumb-nav {

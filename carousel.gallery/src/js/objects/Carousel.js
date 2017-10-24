@@ -3,14 +3,12 @@ var JACKNIFE = JACKNIFE || {};
 (function( $ ) {
 	var Carousel = JACKNIFE.Carousel = function Carousel(el) {
 		// Elements
-		var $el       = $(el);
-		var $prev_btn = $('.carousel-prev', $el);
-		var $next_btn = $('.carousel-next', $el);
-		var $carousel = $('.carousel-nav', $el);
-		var $thumbs   = $('ul', $carousel);
-		var $thumb    = $('li', $thumbs);
-		var $content  = $('.carousel-slides ul', $el);
-		var $images   = $('li', $content);
+		var $el         = $(el);
+		var $navigation = $('.carousel-nav', $el);
+		var $prev_btn   = $('.carousel-prev', $navigation);
+		var $next_btn   = $('.carousel-next', $navigation);
+		var $thumbs     = $('.carousel-thumbs', $navigation);
+		var $thumb      = $('li', $thumbs);
 
 		// Variables
 		var index = 0;
@@ -19,29 +17,50 @@ var JACKNIFE = JACKNIFE || {};
 		// Public Functions
 		this.init = function() {
 			// Apply listeners
+			$('li', $navigation).on('click', _nav_click);
 			$prev_btn.on('click', _showPrevious);
 			$next_btn.on('click', _showNext);
-			$('a', $thumb).on('click', _showImg);
 			$(window).on('resize', _resize);
 
 			$(window).resize();
+
+			_nav_to(0);
 			return;
 		}
 
 		// Private Functions
-		var _showImg = function(e) {
+		var _nav_click = function(e) {
 			e.preventDefault();
 
-			var target = $(this).data('index');
-			var distance = $el.width() * target;
+			var target = $(this).data('slide');
+			_nav_to(target);
+		}
 
-			$content.css('left', -distance + 'px');
+		var _nav_to = function(target) {
+			$('[data-slide]', $el).removeClass('active');
+			var $target = $('[data-slide="' + target + '"]', $el);
+			$target.addClass('active');
+			if ($('video', $el).length) {
+				var $videos = $('video', $el);
+				$videos.each(function() {
+					var $video = $(this).get(0);
+					if (!$video.paused) {
+						$video.pause();
+					}
+				});
+			}
+			if ($('video', $target).length) {
+				var $video = $('video', $target).get(0);
+				if ($video.paused) {
+					$video.play();
+				}
+			}
 		}
 
 		var _showPrevious = function(e) {
 			e.preventDefault();
 
-			var carousel_width = $carousel.width();
+			var carousel_width = $navigation.width();
 			var position       = $thumbs.position().left;
 			var thumbs_width   = $thumbs.width();
 			var distance;
@@ -65,7 +84,7 @@ var JACKNIFE = JACKNIFE || {};
 		var _showNext = function(e) {
 			e.preventDefault();
 
-			var carousel_width = $carousel.width();
+			var carousel_width = $navigation.width();
 			var position       = $thumbs.position().left;
 			var thumbs_width   = $thumbs.width();
 			var distance;
@@ -89,15 +108,14 @@ var JACKNIFE = JACKNIFE || {};
 		var _resize = function(e) {
 			var thumb_width    = $thumb.width() + 16;
 			var target_width   = thumb_width * $thumb.length;
-			var carousel_width = $carousel.width();
+			var carousel_width = $navigation.width();
 			var thumbs_width   = $thumbs.width();
 			var distance       = carousel_width * index;
 			var content_width  = $el.width() * $thumb.length;
 
-			$content.width(content_width);
 			$images.width(content_width / $thumb.length);
 
-			limit = target_width / $carousel.width();
+			limit = target_width / $navigation.width();
 			$thumbs.width(target_width);
 
 			if (limit <= 1) {
