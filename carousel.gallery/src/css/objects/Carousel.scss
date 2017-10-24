@@ -33,7 +33,7 @@
 			}
 		}
 	}
-	.carousel-navigation {
+	.carousel-nav {
 		right: 50%;
 		box-sizing: border-box;
 		padding: 0 1.25rem;
@@ -49,23 +49,7 @@
 			}
 		}
 	}
-	.carousel-dot-navigation {
-		position: absolute;
-		bottom: 1.25rem;
-		li {
-			span:first-child {
-				display: block;
-				width: 10px;
-				height: 10px;
-				border-radius: 10px;
-				border: 2px solid $white;
-			}
-			&:hover,
-			&.active {
-				span:first-child {
-					background-color: $white;
-				}
-			}
-		}
+	.carousel-thumb-nav {
+
 	}
 }
