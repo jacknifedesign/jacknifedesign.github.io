@@ -5,31 +5,35 @@
 	width: 100%;
 	height: 0;
 	overflow: hidden;
-	.carousel-slide {
-		transition: all 0.5s ease-in-out;
-		opacity: 0;
-		pointer-events: none;
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 50%;
-		right: 50%;
-		@include transform(translate(50%, -50%));
-		&.active {
-			opacity: 1;
-			pointer-events: auto;
-		}
-		.banner-bg {
+	ul {
+		list-style-type: none;
+	}
+	.carousel-slides {
+		li {
+			transition: all 0.5s ease-in-out;
+			opacity: 0;
+			pointer-events: none;
 			position: absolute;
 			width: 100%;
 			height: 100%;
 			top: 50%;
 			right: 50%;
 			@include transform(translate(50%, -50%));
+			&.active {
+				opacity: 1;
+				pointer-events: auto;
+			}
+			.banner-bg {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 50%;
+				right: 50%;
+				@include transform(translate(50%, -50%));
+			}
 		}
 	}
 	.carousel-navigation {
-		list-style-type: none;
 		position: absolute;
 		right: 50%;
 		bottom: 1.25rem;

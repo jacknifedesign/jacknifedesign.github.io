@@ -20,37 +20,54 @@ layout: default
 ## Code
 HTML
 ```html
-<section id="Hero" class="carousel banner">
-	<div class="carousel-slide active" data-slide="0">
+<ul class="carousel-slides">
+	<li class="active" data-slide="0">
 		<div class="banner-bg">
-			<img src="../../../images/1920-1080_01.jpg" alt="" />
-		</div>
-		<div class="container">
-			<div class="banner-copy">
-				<h1>Sollicitundin tempor id eu</h1>
-				<h2>Risus in hendrerit gravida</h2>
-			</div>
-		</div>
-	</div>
-	<div class="carousel-slide" data-slide="1">
-		<div class="banner-bg">
-			<video loop muted poster="../../../images/1920-1080_01.jpg">
+			<video loop="" muted="" autoplay="" poster="../../../images/1920-1080_01.jpg">
 				<source src="../../../videos/1920-1080.webm" type="video/webm">
 				<source src="../../../videos/1920-1080.mp4" type="video/mp4">
 			</video>
 		</div>
 		<div class="container">
 			<div class="banner-copy">
-				<h2>Sollicitundin tempor id eu</h2>
-				<h3>Risus in hendrerit gravida</h3>
+				<h1>Sollicitudin tempor id eu</h1>
+				<h2>Risus in hendrerit gravida</h2>
 			</div>
 		</div>
-	</div>
-	<ul class="carousel-navigation">
-		<li class="active" data-slide="0"><span class="sr-only">First slide</span></li>
-		<li data-slide="1"><span class="sr-only">Second slide</span></li>
-	</ul>
-</section>
+	</li>
+	<li data-slide="1">
+		<div class="banner-bg">
+			<img src="../../../images/1920-1080_02.jpg" alt="" />
+		</div>
+		<div class="container">
+			<div class="banner-copy">
+				<h2>Pellentesque adipiscing commodo elit</h2>
+				<h3>In egestas erat imperdiet</h3>
+			</div>
+		</div>
+	</li>
+	<li data-slide="2">
+		<div class="banner-bg">
+			<img src="../../../images/1920-1080_03.jpg" alt="" />
+		</div>
+		<div class="container text-center">
+			<div class="banner-copy">
+				<h2>Sit amet massa vitae</h2>
+			</div>
+		</div>
+	</li>
+	<li data-slide="3">
+		<div class="banner-bg">
+			<img src="../../../images/1920-1080_04.jpg" alt="" />
+		</div>
+	</li>
+</ul>
+<ul class="carousel-navigation">
+	<li class="active" data-slide="0"><span class="sr-only">First slide</span></li>
+	<li data-slide="1"><span class="sr-only">Second slide</span></li>
+	<li data-slide="2"><span class="sr-only">Third slide</span></li>
+	<li data-slide="3"><span class="sr-only">Forth slide</span></li>
+</ul>
 ```
 JS
 ```javascript
@@ -128,31 +145,35 @@ CSS
 	width: 100%;
 	height: 0;
 	overflow: hidden;
-	.carousel-slide {
-		transition: all 0.5s ease-in-out;
-		opacity: 0;
-		pointer-events: none;
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		top: 50%;
-		right: 50%;
-		@include transform(translate(50%, -50%));
-		&.active {
-			opacity: 1;
-			pointer-events: auto;
-		}
-		.banner-bg {
+	ul {
+		list-style-type: none;
+	}
+	.carousel-slides {
+		li {
+			transition: all 0.5s ease-in-out;
+			opacity: 0;
+			pointer-events: none;
 			position: absolute;
 			width: 100%;
 			height: 100%;
 			top: 50%;
 			right: 50%;
 			@include transform(translate(50%, -50%));
+			&.active {
+				opacity: 1;
+				pointer-events: auto;
+			}
+			.banner-bg {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				top: 50%;
+				right: 50%;
+				@include transform(translate(50%, -50%));
+			}
 		}
 	}
 	.carousel-navigation {
-		list-style-type: none;
 		position: absolute;
 		right: 50%;
 		bottom: 1.25rem;
