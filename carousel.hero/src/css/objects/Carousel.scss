@@ -42,11 +42,14 @@
 		@include transform(translate(50%, 0));
 		li {
 			display: inline-block;
-			width: 10px;
-			height: 10px;
 			margin-right: 0.25rem;
-			border-radius: 10px;
-			border: 2px solid $white;
+			span {
+				display: block;
+				width: 10px;
+				height: 10px;
+				border-radius: 10px;
+				border: 2px solid $white;
+			}
 			&:last-child {
 				margin-right: 0;
 			}
@@ -55,7 +58,9 @@
 			}
 			&:hover,
 			&.active {
-				background-color: $white;
+				span {
+					background-color: $white;
+				}
 			}
 		}
 	}

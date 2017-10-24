@@ -67,10 +67,10 @@ HTML
 	</div>
 	<div class="carousel-navigation">
 		<ul>
-			<li class="active" data-slide="0"><span class="sr-only">First slide</span></li>
-			<li data-slide="1"><span class="sr-only">Second slide</span></li>
-			<li data-slide="2"><span class="sr-only">Third slide</span></li>
-			<li data-slide="3"><span class="sr-only">Forth slide</span></li>
+			<li class="active" data-slide="0"><span></span><span class="sr-only">First slide</span></li>
+			<li data-slide="1"><span></span><span class="sr-only">Second slide</span></li>
+			<li data-slide="2"><span></span><span class="sr-only">Third slide</span></li>
+			<li data-slide="3"><span></span><span class="sr-only">Forth slide</span></li>
 		</ul>
 	</div>
 </section>
