@@ -34,9 +34,7 @@
 		}
 	}
 	.carousel-navigation {
-		position: absolute;
 		right: 50%;
-		bottom: 1.25rem;
 		box-sizing: border-box;
 		padding: 0 1.25rem;
 		@include transform(translate(50%, 0));
@@ -63,5 +61,9 @@
 				}
 			}
 		}
+	}
+	.carousel-dot-navigation {
+		position: absolute;
+		bottom: 1.25rem;
 	}
 }

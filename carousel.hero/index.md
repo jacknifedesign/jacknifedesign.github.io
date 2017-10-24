@@ -65,7 +65,7 @@ HTML
 			</li>
 		</ul>
 	</div>
-	<div class="carousel-navigation">
+	<div class="carousel-navigation carousel-dot-navigation">
 		<ul>
 			<li class="active" data-slide="0">
 				<span></span>
