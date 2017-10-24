@@ -54,8 +54,10 @@
 		width: 100%;
 		padding: 0 70px;
 		box-sizing: border-box;
-
-		overflow: hidden;
+		.carousel-thumbs {
+			overflow: hidden;
+			position: relative;
+		}
 		ul {
 			height: 200px;
 			width: 200%;
