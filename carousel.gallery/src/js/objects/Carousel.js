@@ -7,7 +7,7 @@ var JACKNIFE = JACKNIFE || {};
 		var $navigation = $('.carousel-nav', $el);
 		var $prev_btn   = $('.carousel-prev', $navigation);
 		var $next_btn   = $('.carousel-next', $navigation);
-		var $thumbs     = $('.carousel-thumbs', $navigation);
+		var $thumbs     = $('.carousel-thumbs ul', $navigation);
 		var $thumb      = $('li', $thumbs);
 
 		// Variables
