@@ -67,10 +67,22 @@ HTML
 	</div>
 	<div class="carousel-navigation">
 		<ul>
-			<li class="active" data-slide="0"><span></span><span class="sr-only">First slide</span></li>
-			<li data-slide="1"><span></span><span class="sr-only">Second slide</span></li>
-			<li data-slide="2"><span></span><span class="sr-only">Third slide</span></li>
-			<li data-slide="3"><span></span><span class="sr-only">Forth slide</span></li>
+			<li class="active" data-slide="0">
+				<span></span>
+				<span class="sr-only">First slide</span>
+			</li>
+			<li data-slide="1">
+				<span></span>
+				<span class="sr-only">Second slide</span>
+			</li>
+			<li data-slide="2">
+				<span></span>
+				<span class="sr-only">Third slide</span>
+			</li>
+			<li data-slide="3">
+				<span></span>
+				<span class="sr-only">Forth slide</span>
+			</li>
 		</ul>
 	</div>
 </section>
@@ -188,11 +200,14 @@ CSS
 		@include transform(translate(50%, 0));
 		li {
 			display: inline-block;
-			width: 10px;
-			height: 10px;
 			margin-right: 0.25rem;
-			border-radius: 10px;
-			border: 2px solid $white;
+			span:first-child {
+				display: block;
+				width: 10px;
+				height: 10px;
+				border-radius: 10px;
+				border: 2px solid $white;
+			}
 			&:last-child {
 				margin-right: 0;
 			}
@@ -201,7 +216,9 @@ CSS
 			}
 			&:hover,
 			&.active {
-				background-color: $white;
+				span:first-child {
+					background-color: $white;
+				}
 			}
 		}
 	}
