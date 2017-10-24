@@ -4,7 +4,7 @@ var JACKNIFE = JACKNIFE || {};
 	var Carousel = JACKNIFE.Carousel = function Carousel(el) {
 		// Elements
 		var $el         = $(el);
-		var $navigation = $('.carousel-navigation', $el);
+		var $navigation = $('.carousel-nav', $el);
 
 		// Variables
 
