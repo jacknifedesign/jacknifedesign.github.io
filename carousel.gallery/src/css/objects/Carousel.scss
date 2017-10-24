@@ -34,27 +34,31 @@
 		}
 	}
 	.carousel-navigation {
-		position: absolute;
 		right: 50%;
-		bottom: 1.25rem;
 		box-sizing: border-box;
 		padding: 0 1.25rem;
 		@include transform(translate(50%, 0));
 		li {
 			display: inline-block;
 			margin-right: 0.25rem;
+			&:last-child {
+				margin-right: 0;
+			}
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+	.carousel-dot-navigation {
+		position: absolute;
+		bottom: 1.25rem;
+		li {
 			span:first-child {
 				display: block;
 				width: 10px;
 				height: 10px;
 				border-radius: 10px;
 				border: 2px solid $white;
-			}
-			&:last-child {
-				margin-right: 0;
-			}
-			&:hover {
-				cursor: pointer;
 			}
 			&:hover,
 			&.active {
