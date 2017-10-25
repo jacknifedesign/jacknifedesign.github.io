@@ -60,7 +60,10 @@
 			@include transform(translate(0, -50%));
 			.fa {
 				font-size: 4.5rem;
-				text-align: center;
+				position: absolute;
+				top: 50%;
+				right: 50%;
+				@include transform(translate(50%, -50%));
 			}
 		}
 		.carousel-prev {
