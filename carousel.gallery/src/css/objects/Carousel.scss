@@ -50,21 +50,19 @@
 				cursor: pointer;
 			}
 		}
-		.gallery-prev,
-		.gallery-next {
+		.carousel-prev,
+		.carousel-next {
 			width: 35px;
 			height: 75px;
 			position: absolute;
 			top: 50%;
 			@include transform(translate(0, -50%));
 		}
-		.gallery-prev {
+		.carousel-prev {
 			left: 0;
-			//background-image: url(../images/utility/gallery-prev.png);
 		}
-		.gallery-next {
+		.carousel-next {
 			right: 0;
-			//background-image: url(../images/utility/gallery-next.png);
 		}
 	}
 	.carousel-thumb-nav {
