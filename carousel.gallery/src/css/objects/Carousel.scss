@@ -52,11 +52,15 @@
 		}
 		.carousel-prev,
 		.carousel-next {
-			width: 35px;
-			height: 75px;
+			color: $white;
+			width: 4.375rem;
+			height: 100%;
 			position: absolute;
 			top: 50%;
 			@include transform(translate(0, -50%));
+			.fa {
+				font-size: 2rem;
+			}
 		}
 		.carousel-prev {
 			left: 0;
@@ -67,7 +71,7 @@
 	}
 	.carousel-thumb-nav {
 		width: 100%;
-		padding: 0 70px;
+		padding: 0 4.375rem;
 		box-sizing: border-box;
 		.carousel-thumbs {
 			overflow: hidden;
