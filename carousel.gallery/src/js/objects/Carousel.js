@@ -83,12 +83,12 @@ var JACKNIFE = JACKNIFE || {};
 
 		var _showNext = function(e) {
 			e.preventDefault();
-console.log('next');
+
 			var carousel_width = $navigation.width();
 			var position       = $thumbs.position().left;
 			var thumbs_width   = $thumbs.width();
 			var distance;
-console.log(limit);
+
 			if (limit <= 1) {
 				return;
 			}
@@ -101,7 +101,6 @@ console.log(limit);
 			}
 
 			distance = carousel_width * index;
-console.log(distance);
 			$thumbs.css('left', -distance + 'px');
 		}
 
@@ -115,7 +114,6 @@ console.log(distance);
 
 			limit = target_width / $navigation.width();
 			$thumbs.width(target_width);
-console.log(limit);
 			if (limit <= 1) {
 				return;
 			}
