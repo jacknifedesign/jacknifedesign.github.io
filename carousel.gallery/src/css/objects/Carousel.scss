@@ -2,7 +2,6 @@
 	ul {
 		list-style-type: none;
 		padding: 0;
-		position: relative;
 	}
 	.carousel-slides {
 		background: $black;
@@ -85,6 +84,7 @@
 		ul {
 			height: 200px;
 			width: 200%;
+			position: relative;
 			li {
 				float: left;
 				width: 300px;
