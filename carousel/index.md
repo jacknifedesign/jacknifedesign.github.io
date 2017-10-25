@@ -25,6 +25,7 @@ layout: default
 
 ## Examples
 - [Example 01](examples/01)
+- [Example 02](examples/02)
 
 ## Known Issues
 
