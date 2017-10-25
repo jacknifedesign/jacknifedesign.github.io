@@ -59,7 +59,8 @@
 			top: 50%;
 			@include transform(translate(0, -50%));
 			.fa {
-				font-size: 2rem;
+				font-size: 4.5rem;
+				text-align: center;
 			}
 		}
 		.carousel-prev {
