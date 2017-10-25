@@ -31,7 +31,6 @@ Run `grunt` on the src folder to generate the dist files.
 
 ### Carousels
 - [Carousel](carousel)
-- [Hero Carousel](carousel.hero)
 
 ### Forms
 - [Form Controller](form.controller)
