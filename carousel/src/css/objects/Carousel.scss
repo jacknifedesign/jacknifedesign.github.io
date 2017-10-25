@@ -114,4 +114,23 @@
 			}
 		}
 	}
+	.carousel-dot-nav {
+		position: absolute;
+		bottom: 1.25rem;
+		li {
+			span:first-child {
+				display: block;
+				width: 10px;
+				height: 10px;
+				border-radius: 10px;
+				border: 2px solid $white;
+			}
+			&:hover,
+			&.active {
+				span:first-child {
+					background-color: $white;
+				}
+			}
+		}
+	}
 }

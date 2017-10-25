@@ -17,12 +17,15 @@ var JACKNIFE = JACKNIFE || {};
 		// Public Functions
 		this.init = function() {
 			// Apply listeners
-			$('li', $navigation).on('click', _nav_click);
-			$prev_btn.on('click', _showPrevious);
-			$next_btn.on('click', _showNext);
-			$(window).on('resize', _resize);
+			$('[data-slide]', $navigation).on('click', _nav_click);
 
-			$(window).resize();
+			if ($navigation.hasClass('carousel-thumb-nav')) {
+				$prev_btn.on('click', _showPrevious);
+				$next_btn.on('click', _showNext);
+				$(window).on('resize', _resize);
+
+				$(window).resize();
+			}
 
 			_nav_to(0);
 			return;
