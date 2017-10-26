@@ -4,10 +4,10 @@ var JACKNIFE = JACKNIFE || {};
 	var CircleCountdown = JACKNIFE.CircleCountdown = function CircleCountdown(el) {
 		// Elements
 		var $el          = el;
-		var $dayCount    = $('.timer-days .timer-count', $el);
-		var $hourCount   = $('.timer-hours .timer-count', $el);
-		var $minuteCount = $('.timer-minutes .timer-count', $el);
-		var $secondCount = $('.timer-seconds .timer-count', $el);
+		var $dayCount    = $('#CountdownDays .timer-count', $el);
+		var $hourCount   = $('#CountdownHours .timer-count', $el);
+		var $minuteCount = $('#CountdownMinutes .timer-count', $el);
+		var $secondCount = $('#CountdownSeconds .timer-count', $el);
 
 		// Variables
 		var targetStart  = $el.data('start-time');

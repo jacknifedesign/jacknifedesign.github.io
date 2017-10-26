@@ -10,14 +10,15 @@ var JACKNIFE = JACKNIFE || {};
 		var future = now + day;
 console.log(past);
 console.log(future);
-		$('.countdown').data('start-time', past);
-		$('.countdown').data('end-time', future);
+		$('#Countdown').data('start-time', past);
+		$('#Countdown').data('end-time', future);
 
 		// Initialize the objects
-		$('.circle-countdown').each(function() {
-			var CircleCountdown = new JACKNIFE.CircleCountdown($(this));
+		var $CircleCountdown = $('#Countdown');
+		if ($Countdown.length) {
+			var CircleCountdown = new JACKNIFE.CircleCountdown($CircleCountdown);
 			CircleCountdown.init();
-			$(this).data('CircleCountdown', CircleCountdown);
-		});
+			$CircleCountdown.data('CircleCountdown', CircleCountdown);
+		}
 	});
 })( jQuery );
