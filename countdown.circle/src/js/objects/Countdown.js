@@ -25,6 +25,7 @@ var JACKNIFE = JACKNIFE || {};
 		var HourColour   = '#FF8A3D';
 		var MinuteColour = '#FF8A3D';
 		var SecondColour = '#FF8A3D';
+		var BGColour     = "#000000"
 
 		// Public Functions
 		this.init = function() {
@@ -39,30 +40,29 @@ var JACKNIFE = JACKNIFE || {};
 
 			DayBar = new ProgressBar.Circle(CountdownDays, {
 				strokeWidth: 2,
-				color: '#FFFFFF',
-				trailColor: DayColour,
+				color: DayColour,
+				trailColor: BGColour,
 				trailWidth: 2
 			});
 
 			HourBar = new ProgressBar.Circle(CountdownHours, {
 				strokeWidth: 2,
-				color: '#FFFFFF',
-				trailColor: HourColour,
+				color: HourColour,
+				trailColor: BGColour,
 				trailWidth: 2
 			});
 
 			MinuteBar = new ProgressBar.Circle(CountdownMinutes, {
 				strokeWidth: 2,
-				color: '#FFFFFF',
-				trailColor: MinuteColour,
+				color: MinuteColour,
+				trailColor: BGColour,
 				trailWidth: 2
 			});
-
 			
 			SecondBar = new ProgressBar.Circle(CountdownSeconds, {
 				strokeWidth: 2,
-				color: '#FFFFFF',
-				trailColor: SecondColour,
+				color: SecondColour,
+				trailColor: BGColour,
 				trailWidth: 2
 			});
 			
