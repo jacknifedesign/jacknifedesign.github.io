@@ -21,30 +21,36 @@ Displays a countdown using a specific start time which displays a message once t
 ## Options
 
 ## Code
-Tayco JS
+JS
 ```javascript
-var $Countdown = $('#Countdown');
-if ($Countdown.length) {
-	var Countdown = new TAYCO.Countdown($Countdown);
-	Countdown.init();
-	$Countdown.data('Countdown', Countdown);
-}
-```
-Tayco JS
-```javascript
-var TAYCO = TAYCO || {};
+var JACKNIFE = JACKNIFE || {};
 
 (function( $ ) {
-	var Countdown = TAYCO.Countdown = function Countdown(el) {
+	$( document ).ready(function() {
+		// Initialize the objects
+		var $CircleCountdown = $('#Countdown');
+		if ($CircleCountdown.length) {
+			var CircleCountdown = new JACKNIFE.CircleCountdown($CircleCountdown);
+			CircleCountdown.init();
+			$CircleCountdown.data('CircleCountdown', CircleCountdown);
+		}
+	});
+})( jQuery );
+```
+JS
+```javascript
+var JACKNIFE = JACKNIFE || {};
+
+(function( $ ) {
+	var CircleCountdown = JACKNIFE.CircleCountdown = function CircleCountdown(el) {
 		// Elements
 		var $el          = el;
 		var $dayCount    = $('#CountdownDays .timer-count', $el);
 		var $hourCount   = $('#CountdownHours .timer-count', $el);
 		var $minuteCount = $('#CountdownMinutes .timer-count', $el);
-		//var $secondCount = $('#CountdownSeconds .timer-count', $el);
+		var $secondCount = $('#CountdownSeconds .timer-count', $el);
 
 		// Variables
-		var endMessage   = TAYCO.countdownEndMessage;
 		var targetStart  = $el.data('start-time');
 		var targetEnd    = $el.data('end-time');
 		var startDate    = new Date(targetStart).getTime();
@@ -52,15 +58,21 @@ var TAYCO = TAYCO || {};
 		var duration     = endDate - startDate;
 		var timeInterval = null;
 
-		var DayBar    = null;
-		var HourBar   = null;
-		var MinuteBar = null;
-		//var SecondBar = null;
+		var DayBar       = null;
+		var HourBar      = null;
+		var MinuteBar    = null;
+		var SecondBar    = null;
+		var DayColour    = '#FF8A3D';
+		var HourColour   = '#FF8A3D';
+		var MinuteColour = '#FF8A3D';
+		var SecondColour = '#FF8A3D';
+		var BGColour     = "#000000"
 
 		// Public Functions
 		this.init = function() {
 			
 			if ($el.hasClass('countdown-complete')) {
+				_refreshMessage();
 				return;
 			}
 
@@ -69,33 +81,31 @@ var TAYCO = TAYCO || {};
 
 			DayBar = new ProgressBar.Circle(CountdownDays, {
 				strokeWidth: 2,
-				color: '#FFFFFF',
-				trailColor: '#FF8A3D',
+				color: DayColour,
+				trailColor: BGColour,
 				trailWidth: 2
 			});
 
 			HourBar = new ProgressBar.Circle(CountdownHours, {
 				strokeWidth: 2,
-				color: '#FFFFFF',
-				trailColor: '#FF8A3D',
+				color: HourColour,
+				trailColor: BGColour,
 				trailWidth: 2
 			});
 
 			MinuteBar = new ProgressBar.Circle(CountdownMinutes, {
 				strokeWidth: 2,
-				color: '#FFFFFF',
-				trailColor: '#FF8A3D',
+				color: MinuteColour,
+				trailColor: BGColour,
 				trailWidth: 2
 			});
-
-			/*
+			
 			SecondBar = new ProgressBar.Circle(CountdownSeconds, {
 				strokeWidth: 2,
-				color: '#FFFFFF',
-				trailColor: '#FF8A3D',
+				color: SecondColour,
+				trailColor: BGColour,
 				trailWidth: 2
 			});
-			*/
 
 			return;
 		}
@@ -107,8 +117,8 @@ var TAYCO = TAYCO || {};
 			var progress = null;
 
 			// Time calculations for days, hours, minutes and seconds
-			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var days    = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours   = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
 			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
 			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
@@ -131,35 +141,32 @@ var TAYCO = TAYCO || {};
 			$minuteCount.html(minutes);
 
 			// Update Second progress bar
-			/*
 			progress = 60 - seconds;
 			progress = (progress / 60).toFixed(3);
 			SecondBar.set(progress);
 			$secondCount.html(seconds);
-			*/
 
 			if (distance < 0) {
 				clearInterval(timeInterval);
-				$('p', $el).html(endMessage);
 				$el.addClass('countdown-complete');
 			}
+		}
+
+		var _refreshMessage = function() {
+			//$('p', $el).html(endMessage);
 		}
 	}
 })( jQuery );
 ```
-Tayco CSS
+CSS
 ```sass
 #Countdown {
-	background: rgba(247, 134, 61, 0.95);
 	max-height: 120px;
 	height: 120px;
 	&.countdown-complete {
 		.countdown-int {
 			p {
 				margin-right: 0;
-				a:hover {
-					color: $white;
-				}
 			}
 		}
 		.countdown-timer {
@@ -168,15 +175,12 @@ Tayco CSS
 	}
 	.countdown-int {
 		@extend %clearfix;
-		display: inline-block;
+		display: block;
 		position: relative;
-		left: 50%;
-		transform: translate(-50%, 0);
-		-webkit-transform: translate(-50%, 0);
-		-ms-transform: translate(-50%, 0);
+		right: 50%;
+		@include transform(translate(50%, 0));
 		p {
-			@include tungsten-semibold();
-			color: $white;
+			color: inherit;
 			text-transform: uppercase;
 			margin: 0;
 			line-height: 120px;
@@ -195,22 +199,18 @@ Tayco CSS
 			text-align: center;
 			position: absolute;
 			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-			-webkit-transform: translate(-50%, -50%);
-			-ms-transform: translate(-50%, -50%);
+			right: 50%;
+			@include transform(translate(50%, -50%));
 			.timer-count {
-				@include tungsten-semibold();
-				color: $white;
+				color: inherit;
 				font-size: 2.5rem;
 				line-height: 1;
 				display: block;
 			}
 			> span {
-				font-family: $montserrat;
 				font-size: 0.75rem;
 				font-weight: normal;
-				color: $white;
+				color: inherit;
 			}
 		}
 	}
@@ -218,9 +218,8 @@ Tayco CSS
 ```
 Tayco HTML
 ```html
-<div id="Countdown" data-start-time="<?php echo $start_time;?>" data-end-time="<?php echo $end_time;?>"<?php echo $class;?>>
+<div id="Countdown" class="circle-countdown" data-start-time="June 10, 2017 10:00:00" data-end-time="December 10, 2017 17:00:00">
 	<div class="countdown-int">
-		<p><?php echo $message;?></p>
 		<div id="CountdownDays" class="countdown-timer">
 			<div class="timer-int">
 				<span class="timer-count">0</span>
@@ -240,12 +239,13 @@ Tayco HTML
 				<span class="mobile-only">Min</span>
 			</div>
 		</div>
-		<!--<div id="CountdownSeconds" class="countdown-timer">
+		<div id="CountdownSeconds" class="countdown-timer">
 			<div class="timer-int">
 				<span class="timer-count">0</span>
-				<span>Seconds</span>
+				<span class="desktop-only">Seconds</span>
+				<span class="mobile-only">Secs</span>
 			</div>
-		</div>-->
+		</div>
 	</div>
 </div>
 ```

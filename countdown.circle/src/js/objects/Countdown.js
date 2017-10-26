@@ -65,7 +65,6 @@ var JACKNIFE = JACKNIFE || {};
 				trailColor: BGColour,
 				trailWidth: 2
 			});
-			
 
 			return;
 		}
