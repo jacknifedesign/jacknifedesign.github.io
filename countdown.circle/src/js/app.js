@@ -15,7 +15,7 @@ console.log(future);
 
 		// Initialize the objects
 		var $CircleCountdown = $('#Countdown');
-		if ($Countdown.length) {
+		if ($CircleCountdown.length) {
 			var CircleCountdown = new JACKNIFE.CircleCountdown($CircleCountdown);
 			CircleCountdown.init();
 			$CircleCountdown.data('CircleCountdown', CircleCountdown);
