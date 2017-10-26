@@ -9,8 +9,8 @@ var JACKNIFE = JACKNIFE || {};
 		var past   = now - day;
 		var future = now + day;
 
-		$('#Countdown').data('start-time', past);
-		$('#Countdown').data('end-time', future);
+		$('#Countdown').attr('data-start-time', past);
+		$('#Countdown').attr('data-end-time', future);
 
 		// Initialize the objects
 		var $CircleCountdown = $('#Countdown');
