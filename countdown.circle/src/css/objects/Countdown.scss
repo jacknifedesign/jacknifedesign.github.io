@@ -1,14 +1,10 @@
 .circle-countdown {
-	background: rgba(247, 134, 61, 0.95);
 	max-height: 120px;
 	height: 120px;
 	&.countdown-complete {
 		.countdown-int {
 			p {
 				margin-right: 0;
-				a:hover {
-					color: $white;
-				}
 			}
 		}
 		.countdown-timer {
@@ -22,7 +18,7 @@
 		right: 50%;
 		@include transform(translate(50%, 0));
 		p {
-			color: $white;
+			color: inherit;
 			text-transform: uppercase;
 			margin: 0;
 			line-height: 120px;
@@ -44,7 +40,7 @@
 			right: 50%;
 			@include transform(translate(50%, -50%));
 			.timer-count {
-				color: $white;
+				color: inherit;
 				font-size: 2.5rem;
 				line-height: 1;
 				display: block;
@@ -52,7 +48,7 @@
 			> span {
 				font-size: 0.75rem;
 				font-weight: normal;
-				color: $white;
+				color: inherit;
 			}
 		}
 	}

@@ -8,7 +8,8 @@ var JACKNIFE = JACKNIFE || {};
 		var now    = new Date().getTime();
 		var past   = now - day;
 		var future = now + day;
-
+console.log(past);
+console.log(future);
 		$('.countdown').data('start-time', past);
 		$('.countdown').data('end-time', future);
 
