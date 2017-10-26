@@ -13,7 +13,7 @@
 	}
 	.countdown-int {
 		@extend %clearfix;
-		display: inline-block;
+		display: block;
 		position: relative;
 		right: 50%;
 		@include transform(translate(50%, 0));
