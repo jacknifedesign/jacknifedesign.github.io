@@ -11,14 +11,17 @@ layout: default
 - Paul Stodolak / Jacknife Design
 
 ## Dependancies
+- jQuery
 
 ## Options
 
 ## Code
 
 ## Examples
+- [Example 01](examples/01)
 
 ## Known Issues
+- May not be AODA compliant
 
 ## Browser Support
 
