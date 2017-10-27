@@ -216,7 +216,7 @@ CSS
 	}
 }
 ```
-Tayco HTML
+HTML
 ```html
 <div id="Countdown" class="circle-countdown" data-start-time="June 10, 2017 10:00:00" data-end-time="December 10, 2017 17:00:00">
 	<div class="countdown-int">
