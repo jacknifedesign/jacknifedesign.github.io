@@ -54,6 +54,12 @@ var RUNNYMEDE = RUNNYMEDE || {};
 		this.init = function() {
 		// Event Handlers
 
+			if (image_length <= 0) {
+				RUNNYMEDE.preload_complete = true;
+				$el.fadeOut('slow', _destroy);
+				return;
+			}
+
 			$images.each(function() {
 				var path   = $(this).attr('src');
 				var is_gif = (path.indexOf('.gif') >= 0) ? true : false;
