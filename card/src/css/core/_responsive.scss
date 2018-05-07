@@ -7,6 +7,9 @@
 			float: left;
 		}
 	}
+	.flex-wrap {
+		flex-wrap: wrap;
+	}
 }
 
 @media screen and (max-width: 500px) {

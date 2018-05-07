@@ -19,3 +19,13 @@
 		box-sizing: border-box;
 	}
 }
+
+.flex-wrap {
+	width: 100%;
+	display: flex;
+	flex-wrap: nowrap;
+	.flex-col {
+		width: 100%;
+		@extend %clearfix;
+	}
+}
