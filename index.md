@@ -65,7 +65,7 @@ Run `grunt` on the src folder to generate the dist files.
 - * [Tabs](tabs.controller)
 
 ### Tiles
-- * [Tile](tile)
+- [Tile](tile)
 
 ### Video
 - [Video](video)

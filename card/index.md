@@ -18,8 +18,8 @@ Cards that maintain aspect ratio and manage overflow
 ## Code
 HTML
 ```html
-<div class="col-wrap">
-	<div class="col">
+<div class="block-wrap">
+	<div class="block-col">
 		<div class="card">
 			<div class="card-content">
 				<div class="card-img">
@@ -31,7 +31,7 @@ HTML
 			</div>
 		</div>
 	</div>
-	<div class="col">
+	<div class="block-col">
 		<div class="card">
 			<div class="card-content">
 				<div class="card-img">
@@ -43,7 +43,7 @@ HTML
 			</div>
 		</div>
 	</div>
-	<div class="col">
+	<div class="block-col">
 		<div class="card">
 			<div class="card-content">
 				<div class="card-img">
@@ -55,7 +55,7 @@ HTML
 			</div>
 		</div>
 	</div>
-	<div class="col">
+	<div class="block-col">
 		<div class="card">
 			<div class="card-content">
 				<div class="card-img">
@@ -67,7 +67,7 @@ HTML
 			</div>
 		</div>
 	</div>
-	<div class="col">
+	<div class="block-col">
 		<div class="card">
 			<div class="card-content">
 				<div class="card-img">
@@ -83,12 +83,12 @@ HTML
 ```
 CSS
 ```sass
-.col-wrap {
+.block-wrap {
 	width: 100%;
 	display: table;
 	table-layout: fixed;
 	margin: auto;
-	.col {
+	.block-col {
 		width: 1px;
 		display: table-cell;
 		vertical-align: top;
@@ -123,9 +123,9 @@ CSS
 	}
 }
 @media screen and (max-width: 1000px) {
-	.col-wrap {
+	.block-wrap {
 		display: block;
-		.col {
+		.block-col {
 			display: block;
 			width: 50%;
 			float: left;
@@ -134,8 +134,8 @@ CSS
 }
 
 @media screen and (max-width: 500px) {
-	.col-wrap {
-		.col {
+	.block-wrap {
+		.block-col {
 			width: 100%;
 			float: none;
 		}

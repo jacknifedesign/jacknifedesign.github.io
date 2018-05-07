@@ -7,12 +7,12 @@
 	@extend %clearfix;
 }
 
-.col-wrap {
+.block-wrap {
 	width: 100%;
 	display: table;
 	table-layout: fixed;
 	margin: auto;
-	.col {
+	.block-col {
 		width: 1px;
 		display: table-cell;
 		vertical-align: top;
