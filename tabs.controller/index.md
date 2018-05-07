@@ -16,12 +16,12 @@ layout: default
 ## Options
 
 ## Code
-Kilberry JS
+JS
 ```javascript
-var KILBERRY = KILBERRY || {};
+var JACKNIFE = JACKNIFE || {};
 
 (function( $ ) {
-	var Tabs = KILBERRY.Tabs = function Tabs(el) {
+	var Tabs = JACKNIFE.Tabs = function Tabs(el) {
 		// Elements
 		var $el       = $(el);
 		var $triggers = $('[data-tab-trigger]', $el);
@@ -61,20 +61,28 @@ var KILBERRY = KILBERRY || {};
 		}
 	}
 })( jQuery );
-$('.tabs').each(function() {
-	var Tabs = new KILBERRY.Tabs($(this));
-	Tabs.init();
-	$(this).data('Tabs', Tabs);
-});
 ```
-Kilberry CSS
+App JS
+```javascript
+var JACKNIFE = JACKNIFE || {};
+
+(function( $ ) {
+	$( document ).ready(function() {
+		$('.tabs').each(function() {
+			var Tabs = new JACKNIFE.Tabs($(this));
+			Tabs.init();
+			$(this).data('Tabs', Tabs);
+		});
+	});
+})( jQuery );
+```
+CSS
 ```sass
-.tab-nav {
+.tab-menu {
+	padding: 0;
 	@extend %clearfix;
-	a {
-		font-size: 1.25rem;
+	button {
 		text-decoration: none;
-		text-transform: uppercase;
 		margin-right: 1.25rem;
 		color: $black;
 		display: block;
@@ -84,12 +92,7 @@ Kilberry CSS
 			margin-right: 0;
 		}
 		&.active {
-			@include before_bar('tiny', $black);
-			font-weight: 600;
-			top: -4px;
-			&:hover {
-				opacity: 1;
-			}
+			opacity: 0.75;
 		}
 	}
 }
@@ -101,14 +104,32 @@ Kilberry CSS
 	}
 }
 ```
-Kilberry HTML
+HTML
 ```html
 <div class="tabs">
-			<nav class="tab-nav"><a href="#" class="tab-trigger active" data-tab-trigger="0">CEO Succession</a><a href="#" class="tab-trigger" data-tab-trigger="1">High Potential</a></nav><div class="tab-content active" data-tab-target="0"><p>The transition from one CEO to the next is a crucial milestone in a company’s history and the chief priority of its board of directors. Done right, the succession will maintain the confidence of investors, customers and employees. Done wrong, it will sacrifice shareholder value, introduce unnecessary risk, and damage brands and reputations.</p>
-<p>Kilberry prepares boards and companies for this transition by drawing on our expertise in executive assessment and development. We develop a deep understanding of your business, industry, and culture in order to develop an airtight succession plan and to advise on which internal or external candidate most closely fits the bill. The result is a seamless transition for you and your stakeholders.</p>
-</div><div class="tab-content" data-tab-target="1"><p>Building bench strength ensures you have the leaders necessary to propel your business forward in the long-term. There are likely stars in your midst, and you may or may not have visibility to who they are. These High Potentials are vital to the continuity and health of your organization. There are two primary risks here: (1) they will leave, either because they are bored or they get recruited elsewhere; or (2) they will not adequately develop their potential.</p>
-<p>Some companies have a strategy for high potential development, but it typically resembles any other coaching or training. High Potentials are different; they require a different approach to accelerate their growth and retain their talent. Using a research-based, innovative, and targeted approach, Kilberry helps companies keep their stars and ensure they are ready to take on critical roles in the future.</p>
-</div>			</div>
+	<menu class="tab-menu">
+		<button class="tab-trigger active" data-tab-trigger="0">Lorem ipsum</button>
+		<button class="tab-trigger" data-tab-trigger="1">Rhoncus aenean</button>
+		<button class="tab-trigger" data-tab-trigger="2">Lorem ipsum</button>
+		<button class="tab-trigger" data-tab-trigger="3">Rhoncus aenean</button>
+	</menu>
+	<div class="tab-content active" data-tab-target="0">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In vitae turpis massa sed. Scelerisque purus semper eget duis at tellus at. Semper eget duis at tellus at urna condimentum mattis. Fermentum et sollicitudin ac orci phasellus egestas tellus rutrum tellus. Arcu non odio euismod lacinia at. Blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque. In hendrerit gravida rutrum quisque non tellus orci ac. Sed ullamcorper morbi tincidunt ornare massa eget egestas. Sagittis orci a scelerisque purus semper. Nulla facilisi cras fermentum odio eu feugiat pretium. Morbi quis commodo odio aenean sed adipiscing diam donec adipiscing. At quis risus sed vulputate odio ut. Facilisis sed odio morbi quis commodo. Vitae tortor condimentum lacinia quis vel. Ac tincidunt vitae semper quis. Sem fringilla ut morbi tincidunt augue. Habitant morbi tristique senectus et. Purus in mollis nunc sed id semper risus. Velit aliquet sagittis id consectetur purus ut.</p>
+		<p>Rhoncus aenean vel elit scelerisque. Ultricies leo integer malesuada nunc vel risus commodo viverra maecenas. Elit duis tristique sollicitudin nibh sit. Nullam eget felis eget nunc lobortis mattis aliquam faucibus purus. Nisl suscipit adipiscing bibendum est ultricies integer quis auctor elit. Amet nisl suscipit adipiscing bibendum est ultricies integer quis auctor. Dictum fusce ut placerat orci nulla pellentesque dignissim enim sit. Consequat semper viverra nam libero justo laoreet sit amet. Massa placerat duis ultricies lacus sed turpis tincidunt id aliquet. Mauris augue neque gravida in fermentum. Nec feugiat in fermentum posuere urna nec tincidunt praesent semper. Tincidunt dui ut ornare lectus sit. Molestie nunc non blandit massa enim nec dui nunc. Lobortis feugiat vivamus at augue eget arcu dictum. Ut eu sem integer vitae justo eget magna fermentum iaculis. In dictum non consectetur a erat nam at lectus urna.</p>
+	</div>
+	<div class="tab-content" data-tab-target="1">
+		<p>Rhoncus aenean vel elit scelerisque. Ultricies leo integer malesuada nunc vel risus commodo viverra maecenas. Elit duis tristique sollicitudin nibh sit. Nullam eget felis eget nunc lobortis mattis aliquam faucibus purus. Nisl suscipit adipiscing bibendum est ultricies integer quis auctor elit. Amet nisl suscipit adipiscing bibendum est ultricies integer quis auctor. Dictum fusce ut placerat orci nulla pellentesque dignissim enim sit. Consequat semper viverra nam libero justo laoreet sit amet. Massa placerat duis ultricies lacus sed turpis tincidunt id aliquet. Mauris augue neque gravida in fermentum. Nec feugiat in fermentum posuere urna nec tincidunt praesent semper. Tincidunt dui ut ornare lectus sit. Molestie nunc non blandit massa enim nec dui nunc. Lobortis feugiat vivamus at augue eget arcu dictum. Ut eu sem integer vitae justo eget magna fermentum iaculis. In dictum non consectetur a erat nam at lectus urna.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In vitae turpis massa sed. Scelerisque purus semper eget duis at tellus at. Semper eget duis at tellus at urna condimentum mattis. Fermentum et sollicitudin ac orci phasellus egestas tellus rutrum tellus. Arcu non odio euismod lacinia at. Blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque. In hendrerit gravida rutrum quisque non tellus orci ac. Sed ullamcorper morbi tincidunt ornare massa eget egestas. Sagittis orci a scelerisque purus semper. Nulla facilisi cras fermentum odio eu feugiat pretium. Morbi quis commodo odio aenean sed adipiscing diam donec adipiscing. At quis risus sed vulputate odio ut. Facilisis sed odio morbi quis commodo. Vitae tortor condimentum lacinia quis vel. Ac tincidunt vitae semper quis. Sem fringilla ut morbi tincidunt augue. Habitant morbi tristique senectus et. Purus in mollis nunc sed id semper risus. Velit aliquet sagittis id consectetur purus ut.</p>
+	</div>
+	<div class="tab-content active" data-tab-target="2">
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In vitae turpis massa sed. Scelerisque purus semper eget duis at tellus at. Semper eget duis at tellus at urna condimentum mattis. Fermentum et sollicitudin ac orci phasellus egestas tellus rutrum tellus. Arcu non odio euismod lacinia at. Blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque. In hendrerit gravida rutrum quisque non tellus orci ac. Sed ullamcorper morbi tincidunt ornare massa eget egestas. Sagittis orci a scelerisque purus semper. Nulla facilisi cras fermentum odio eu feugiat pretium. Morbi quis commodo odio aenean sed adipiscing diam donec adipiscing. At quis risus sed vulputate odio ut. Facilisis sed odio morbi quis commodo. Vitae tortor condimentum lacinia quis vel. Ac tincidunt vitae semper quis. Sem fringilla ut morbi tincidunt augue. Habitant morbi tristique senectus et. Purus in mollis nunc sed id semper risus. Velit aliquet sagittis id consectetur purus ut.</p>
+		<p>Rhoncus aenean vel elit scelerisque. Ultricies leo integer malesuada nunc vel risus commodo viverra maecenas. Elit duis tristique sollicitudin nibh sit. Nullam eget felis eget nunc lobortis mattis aliquam faucibus purus. Nisl suscipit adipiscing bibendum est ultricies integer quis auctor elit. Amet nisl suscipit adipiscing bibendum est ultricies integer quis auctor. Dictum fusce ut placerat orci nulla pellentesque dignissim enim sit. Consequat semper viverra nam libero justo laoreet sit amet. Massa placerat duis ultricies lacus sed turpis tincidunt id aliquet. Mauris augue neque gravida in fermentum. Nec feugiat in fermentum posuere urna nec tincidunt praesent semper. Tincidunt dui ut ornare lectus sit. Molestie nunc non blandit massa enim nec dui nunc. Lobortis feugiat vivamus at augue eget arcu dictum. Ut eu sem integer vitae justo eget magna fermentum iaculis. In dictum non consectetur a erat nam at lectus urna.</p>
+	</div>
+	<div class="tab-content" data-tab-target="3">
+		<p>Rhoncus aenean vel elit scelerisque. Ultricies leo integer malesuada nunc vel risus commodo viverra maecenas. Elit duis tristique sollicitudin nibh sit. Nullam eget felis eget nunc lobortis mattis aliquam faucibus purus. Nisl suscipit adipiscing bibendum est ultricies integer quis auctor elit. Amet nisl suscipit adipiscing bibendum est ultricies integer quis auctor. Dictum fusce ut placerat orci nulla pellentesque dignissim enim sit. Consequat semper viverra nam libero justo laoreet sit amet. Massa placerat duis ultricies lacus sed turpis tincidunt id aliquet. Mauris augue neque gravida in fermentum. Nec feugiat in fermentum posuere urna nec tincidunt praesent semper. Tincidunt dui ut ornare lectus sit. Molestie nunc non blandit massa enim nec dui nunc. Lobortis feugiat vivamus at augue eget arcu dictum. Ut eu sem integer vitae justo eget magna fermentum iaculis. In dictum non consectetur a erat nam at lectus urna.</p>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In vitae turpis massa sed. Scelerisque purus semper eget duis at tellus at. Semper eget duis at tellus at urna condimentum mattis. Fermentum et sollicitudin ac orci phasellus egestas tellus rutrum tellus. Arcu non odio euismod lacinia at. Blandit volutpat maecenas volutpat blandit aliquam etiam erat velit scelerisque. In hendrerit gravida rutrum quisque non tellus orci ac. Sed ullamcorper morbi tincidunt ornare massa eget egestas. Sagittis orci a scelerisque purus semper. Nulla facilisi cras fermentum odio eu feugiat pretium. Morbi quis commodo odio aenean sed adipiscing diam donec adipiscing. At quis risus sed vulputate odio ut. Facilisis sed odio morbi quis commodo. Vitae tortor condimentum lacinia quis vel. Ac tincidunt vitae semper quis. Sem fringilla ut morbi tincidunt augue. Habitant morbi tristique senectus et. Purus in mollis nunc sed id semper risus. Velit aliquet sagittis id consectetur purus ut.</p>
+	</div>
+</div>
 ```
 ## Examples
 - [Example 01](examples/01)
