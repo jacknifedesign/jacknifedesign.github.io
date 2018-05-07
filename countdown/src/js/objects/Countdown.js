@@ -57,11 +57,12 @@ var JACKNIFE = JACKNIFE || {};
 			if (distance < 0) {
 				clearInterval(timeInterval);
 				$el.addClass('countdown-complete');
+				_refreshMessage();
 			}
 		}
 
 		var _refreshMessage = function() {
-			//$('p', $el).html(endMessage);
+			// Countdown Completed
 		}
 	}
 })( jQuery );

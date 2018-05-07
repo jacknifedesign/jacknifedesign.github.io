@@ -112,7 +112,7 @@ var JACKNIFE = JACKNIFE || {};
 		}
 
 		var _refreshMessage = function() {
-			//$('p', $el).html(endMessage);
+			// Countdown Completed
 		}
 	}
 })( jQuery );
