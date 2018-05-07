@@ -250,7 +250,7 @@ HTML
 - [Example 01](examples/01)
 
 ## Known Issues
-- Unique IDs required if multiple counters are required.
+- Unique IDs necessary if multiple counters are required.
 
 ## Browser Support
 
