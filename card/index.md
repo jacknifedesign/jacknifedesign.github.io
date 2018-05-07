@@ -80,6 +80,68 @@ HTML
 		</div>
 	</div>
 </div>
+<div class="flex-wrap">
+	<div class="flex-col">
+		<div class="card">
+			<div class="card-content">
+				<div class="card-img">
+					<img src="../../../images/300-200_01.jpg" alt="">
+				</div>
+				<div class="card-meta">
+					<p>Card</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="flex-col">
+		<div class="card">
+			<div class="card-content">
+				<div class="card-img">
+					<img src="../../../images/300-200_02.jpg" alt="">
+				</div>
+				<div class="card-meta">
+					<p>Card</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="flex-col">
+		<div class="card">
+			<div class="card-content">
+				<div class="card-img">
+					<img src="../../../images/300-200_03.jpg" alt="">
+				</div>
+				<div class="card-meta">
+					<p>Card</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="flex-col">
+		<div class="card">
+			<div class="card-content">
+				<div class="card-img">
+					<img src="../../../images/300-200_04.jpg" alt="">
+				</div>
+				<div class="card-meta">
+					<p>Card</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="flex-col">
+		<div class="card">
+			<div class="card-content">
+				<div class="card-img">
+					<img src="../../../images/300-200_05.jpg" alt="">
+				</div>
+				<div class="card-meta">
+					<p>Card</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 ```
 CSS
 ```sass
@@ -122,6 +184,15 @@ CSS
 		}
 	}
 }
+.flex-wrap {
+	width: 100%;
+	display: flex;
+	flex-wrap: nowrap;
+	.flex-col {
+		width: 100%;
+		@extend %clearfix;
+	}
+}
 @media screen and (max-width: 1000px) {
 	.block-wrap {
 		display: block;
@@ -131,6 +202,12 @@ CSS
 			float: left;
 		}
 	}
+	.flex-wrap {
+		flex-wrap: wrap;
+		.flex-col {
+			width: 50%;
+		}
+	}
 }
 
 @media screen and (max-width: 500px) {
@@ -138,6 +215,11 @@ CSS
 		.block-col {
 			width: 100%;
 			float: none;
+		}
+	}
+	.flex-wrap {
+		.flex-col {
+			width: 100%;
 		}
 	}
 }

@@ -23,7 +23,7 @@ Run `grunt` on the src folder to generate the dist files.
 - * [SVG Animation](animation.svgs)
 
 ### Cards
-- * [Card](card)
+- [Card](card)
 
 ### Countdowns
 - * [Countdown](countdown)
