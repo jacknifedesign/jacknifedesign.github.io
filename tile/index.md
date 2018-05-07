@@ -17,6 +17,24 @@ layout: default
 ## Code
 CSS
 ```sass
+.flex-wrap {
+	width: 100%;
+	display: flex;
+	flex-wrap: nowrap;
+	.flex-col {
+		width: 100%;
+		@extend %clearfix;
+	}
+}
+
+.flex-wrap {
+	.flex-col:first-child {
+		.tile-wrap {
+			float: right;
+		}
+	}
+}
+
 .tile-wrap {
 	width: 100%;
 	max-width: 500px;
@@ -25,7 +43,7 @@ CSS
 
 .tile {
 	width: 100%;
-	height: 100%;
+	height: auto;
 	position: relative;
 	overflow: hidden;
 	box-sizing: border-box;
@@ -35,27 +53,23 @@ CSS
 		height: auto;
 	}
 }
-
 @media screen and (max-width: 500px) {
-	.block-wrap {
-		.block-col {
-			width: 100%;
-			float: none;
-		}
+	.flex-wrap {
+		flex-wrap: wrap;
 	}
 }
 ```
 HTML
 ```html
-<div class="block-wrap">
-	<div class="block-col">
+<div class="flex-wrap">
+	<div class="flex-col">
 		<div class="tile-wrap">
 			<div class="tile">
 				<img src="../../../images/500-500_01.jpg" alt="">
 			</div>
 		</div>
 	</div>
-	<div class="block-col">
+	<div class="flex-col">
 		<div class="tile-wrap">
 			<div class="tile">
 				<img src="../../../images/500-250_02.jpg" alt="">
@@ -66,8 +80,8 @@ HTML
 		</div>
 	</div>
 </div>
-<div class="block-wrap">
-	<div class="block-col">
+<div class="flex-wrap">
+	<div class="flex-col">
 		<div class="tile-wrap">
 			<div class="tile">
 				<img src="../../../images/500-250_04.jpg" alt="">
@@ -77,7 +91,7 @@ HTML
 			</div>
 		</div>
 	</div>
-	<div class="block-col">
+	<div class="flex-col">
 		<div class="tile-wrap">
 			<div class="tile">
 				<img src="../../../images/500-500_06.jpg" alt="">
@@ -85,15 +99,15 @@ HTML
 		</div>
 	</div>
 </div>
-<div class="block-wrap">
-	<div class="block-col">
+<div class="flex-wrap">
+	<div class="flex-col">
 		<div class="tile-wrap">
 			<div class="tile">
 				<img src="../../../images/500-500_07.jpg" alt="">
 			</div>
 		</div>
 	</div>
-	<div class="block-col">
+	<div class="flex-col">
 		<div class="tile-wrap">
 			<div class="tile">
 				<img src="../../../images/500-250_08.jpg" alt="">
