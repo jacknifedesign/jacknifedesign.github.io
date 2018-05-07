@@ -16,6 +16,21 @@ layout: default
 ## Options
 
 ## Code
+App JS
+```javascript
+var JACKNIFE = JACKNIFE || {};
+
+(function( $ ) {
+	$( document ).ready(function() {
+		// Initialize the objects
+		$('.tabs').each(function() {
+			var Tabs = new JACKNIFE.Tabs($(this));
+			Tabs.init();
+			$(this).data('Tabs', Tabs);
+		});
+	});
+})( jQuery );
+```
 JS
 ```javascript
 var JACKNIFE = JACKNIFE || {};
@@ -60,20 +75,6 @@ var JACKNIFE = JACKNIFE || {};
 			e.preventDefault();
 		}
 	}
-})( jQuery );
-```
-App JS
-```javascript
-var JACKNIFE = JACKNIFE || {};
-
-(function( $ ) {
-	$( document ).ready(function() {
-		$('.tabs').each(function() {
-			var Tabs = new JACKNIFE.Tabs($(this));
-			Tabs.init();
-			$(this).data('Tabs', Tabs);
-		});
-	});
 })( jQuery );
 ```
 CSS

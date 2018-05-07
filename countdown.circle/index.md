@@ -23,11 +23,18 @@ Displays a countdown using a specific start time which displays a message once t
 ## Code
 JS
 ```javascript
-$('.circle-countdown').each(function() {
-	var CircleCountdown = new JACKNIFE.CircleCountdown($(this));
-	CircleCountdown.init();
-	$(this).data('CircleCountdown', CircleCountdown);
-});
+var JACKNIFE = JACKNIFE || {};
+
+(function( $ ) {
+	$( document ).ready(function() {
+		// Initialize the objects
+		$('.circle-countdown').each(function() {
+			var CircleCountdown = new JACKNIFE.CircleCountdown($(this));
+			CircleCountdown.init();
+			$(this).data('CircleCountdown', CircleCountdown);
+		});
+	});
+})( jQuery );
 ```
 JS
 ```javascript
