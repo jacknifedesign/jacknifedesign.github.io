@@ -1,7 +1,7 @@
 @media screen and (max-width: 1000px) {
-	.col-wrap {
+	.block-wrap {
 		display: block;
-		.col {
+		.block-col {
 			display: block;
 			width: 50%;
 			float: left;
@@ -13,8 +13,8 @@
 }
 
 @media screen and (max-width: 500px) {
-	.col-wrap {
-		.col {
+	.block-wrap {
+		.block-col {
 			width: 100%;
 			float: none;
 		}
