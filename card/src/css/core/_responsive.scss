@@ -9,6 +9,9 @@
 	}
 	.flex-wrap {
 		flex-wrap: wrap;
+		.flex-col {
+			width: 50%;
+		}
 	}
 }
 
@@ -17,6 +20,11 @@
 		.block-col {
 			width: 100%;
 			float: none;
+		}
+	}
+	.flex-wrap {
+		.flex-col {
+			width: 100%;
 		}
 	}
 }
