@@ -37,8 +37,8 @@ CSS
 }
 
 @media screen and (max-width: 500px) {
-	.col-wrap {
-		.col {
+	.block-wrap {
+		.block-col {
 			width: 100%;
 			float: none;
 		}
@@ -47,15 +47,15 @@ CSS
 ```
 HTML
 ```html
-<div class="col-wrap">
-	<div class="col clearfix">
+<div class="block-wrap">
+	<div class="block-col">
 		<div class="tile-wrap">
 			<div class="tile">
 				<img src="../../../images/500-500_01.jpg" alt="">
 			</div>
 		</div>
 	</div>
-	<div class="col clearfix">
+	<div class="block-col">
 		<div class="tile-wrap">
 			<div class="tile">
 				<img src="../../../images/500-250_02.jpg" alt="">
@@ -66,8 +66,8 @@ HTML
 		</div>
 	</div>
 </div>
-<div class="col-wrap">
-	<div class="col clearfix">
+<div class="block-wrap">
+	<div class="block-col">
 		<div class="tile-wrap">
 			<div class="tile">
 				<img src="../../../images/500-250_04.jpg" alt="">
@@ -77,7 +77,7 @@ HTML
 			</div>
 		</div>
 	</div>
-	<div class="col clearfix">
+	<div class="block-col">
 		<div class="tile-wrap">
 			<div class="tile">
 				<img src="../../../images/500-500_06.jpg" alt="">
@@ -85,15 +85,15 @@ HTML
 		</div>
 	</div>
 </div>
-<div class="col-wrap">
-	<div class="col clearfix">
+<div class="block-wrap">
+	<div class="block-col">
 		<div class="tile-wrap">
 			<div class="tile">
 				<img src="../../../images/500-500_07.jpg" alt="">
 			</div>
 		</div>
 	</div>
-	<div class="col clearfix">
+	<div class="block-col">
 		<div class="tile-wrap">
 			<div class="tile">
 				<img src="../../../images/500-250_08.jpg" alt="">

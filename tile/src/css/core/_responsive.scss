@@ -1,9 +1,13 @@
 @media screen and (max-width: 500px) {
-	.col-wrap {
+	.block-wrap {
 		display: block;
-		.col {
+		.block-col {
 			display: block;
 			width: 100%;
 		}
+	}
+
+	.flex-wrap {
+		flex-wrap: wrap;
 	}
 }

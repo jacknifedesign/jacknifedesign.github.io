@@ -16,60 +16,59 @@ Run `grunt` on the src folder to generate the dist files.
 - [Accordion](accordion)
 
 ### Animations
-- [Animation](animation)
-- [Frame Animation](animation.frame)
-- [Gif Animation](animation.gifs)
-- [Sprite Animation](animation.sprite)
-- [SVG Animation](animation.svgs)
+- * [Animation](animation)
+- * [Frame Animation](animation.frame)
+- * [Gif Animation](animation.gifs)
+- * [Sprite Animation](animation.sprite)
+- * [SVG Animation](animation.svgs)
 
 ### Cards
-- [Card](card)
+- * [Card](card)
 
 ### Countdowns
-- [Countdown](countdown)
+- * [Countdown](countdown)
 - [Circle Countdown](countdown.circle)
 
 ### Carousels
 - [Carousel](carousel)
 
 ### Forms
-- [Form Controller](form.controller)
-- [Form Validator](form.validator)
+- * [Form Controller](form.controller)
+- * [Form Validator](form.validator)
 
 ### Heros
 - [Hero Banner](hero)
 
 ### Maps
-- [Map](map)
+- * [Map](map)
 
 ### Modals
-- [Modal](modal)
-- [Dynamic Modal](modal.dynamic)
-- [Gallery Modal](modal.gallery)
+- * [Modal](modal)
+- * [Dynamic Modal](modal.dynamic)
+- * [Gallery Modal](modal.gallery)
 
 ### Navigations
-- [Navigation](navigation)
+- * [Navigation](navigation)
 
 ### Parallax
-- [Parallax](parallax)
+- * [Parallax](parallax)
 
 ### Preloaders
-- [Preload](preload)
-- [Preload Item](preload.item)
+- * [Preload](preload)
+- * [Preload Item](preload.item)
 
 ### Tables
-- [Table Filter](table.filter)
-- [Table Sort](table.sort)
+- * [Table Filter](table.filter)
+- * [Table Sort](table.sort)
 
 ### Tabs
-- [Tabs](tabs.controller)
+- * [Tabs](tabs.controller)
 
 ### Tiles
-- [Tile](tile)
+- * [Tile](tile)
 
 ### Video
 - [Video](video)
-- [Video Controls](video.controls)
 
 ## Credits
 - Paul Stodolak / Jacknife Design

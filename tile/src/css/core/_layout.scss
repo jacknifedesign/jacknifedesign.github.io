@@ -7,15 +7,26 @@
 	@extend %clearfix;
 }
 
-.col-wrap {
+.block-wrap {
 	width: 100%;
 	display: table;
 	table-layout: fixed;
 	margin: auto;
-	.col {
+	@extend %clearfix;
+	.block-col {
 		width: 1px;
 		display: table-cell;
 		vertical-align: top;
 		box-sizing: border-box;
+	}
+}
+
+.flex-wrap {
+	width: 100%;
+	display: flex;
+	flex-wrap: nowrap;
+	.flex-col {
+		width: 100%;
+		@extend %clearfix;
 	}
 }
