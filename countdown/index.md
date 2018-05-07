@@ -26,7 +26,7 @@ var JACKNIFE = JACKNIFE || {};
 (function( $ ) {
 	$( document ).ready(function() {
 		// Initialize the objects
-		$('.countdown').each(function() {
+		$('.countdown').not('.circle-countdown').each(function() {
 			var Countdown = new JACKNIFE.Countdown($(this));
 			Countdown.init();
 			$(this).data('Countdown', Countdown);
@@ -95,11 +95,12 @@ var JACKNIFE = JACKNIFE || {};
 			if (distance < 0) {
 				clearInterval(timeInterval);
 				$el.addClass('countdown-complete');
+				_refreshMessage();
 			}
 		}
 
 		var _refreshMessage = function() {
-			//$('p', $el).html(endMessage);
+			// Countdown Completed
 		}
 	}
 })( jQuery );
@@ -108,11 +109,6 @@ CSS
 ```sass
 .countdown {
 	&.countdown-complete {
-		.countdown-int {
-			p {
-				margin-right: 0;
-			}
-		}
 		.countdown-timer {
 			display: none;
 		}
@@ -123,26 +119,12 @@ CSS
 		position: relative;
 		right: 50%;
 		@include transform(translate(50%, 0));
-		p {
-			color: inherit;
-			text-transform: uppercase;
-			margin: 0;
-			line-height: 120px;
-			font-size: 3.75rem;
-			float: left;
-			margin-right: 9.375rem;
-		}
 	}
 	.countdown-timer {
 		float: left;
-		margin: 16px 0.5rem;
+		margin: 1rem 0.5rem;
 		position: relative;
 		.timer-int {
-			text-align: center;
-			position: absolute;
-			top: 50%;
-			right: 50%;
-			@include transform(translate(50%, -50%));
 			.timer-count {
 				color: inherit;
 				font-size: 2.5rem;
@@ -150,7 +132,7 @@ CSS
 				display: block;
 			}
 			> span {
-				font-size: 0.75rem;
+				font-size: 1rem;
 				font-weight: normal;
 				color: inherit;
 			}

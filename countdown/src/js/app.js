@@ -13,7 +13,7 @@ var JACKNIFE = JACKNIFE || {};
 		$('.countdown').attr('data-end-time', future);
 
 		// Initialize the objects
-		$('.countdown').each(function() {
+		$('.countdown').not('.circle-countdown').each(function() {
 			var Countdown = new JACKNIFE.Countdown($(this));
 			Countdown.init();
 			$(this).data('Countdown', Countdown);

@@ -26,7 +26,7 @@ Run `grunt` on the src folder to generate the dist files.
 - [Card](card)
 
 ### Countdowns
-- * [Countdown](countdown)
+- [Countdown](countdown)
 - [Circle Countdown](countdown.circle)
 
 ### Carousels
