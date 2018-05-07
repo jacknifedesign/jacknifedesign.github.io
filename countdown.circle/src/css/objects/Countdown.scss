@@ -1,6 +1,4 @@
-#Countdown {
-	max-height: 120px;
-	height: 120px;
+.countdown {
 	&.countdown-complete {
 		.countdown-int {
 			p {
@@ -28,8 +26,6 @@
 		}
 	}
 	.countdown-timer {
-		width: 87px;
-		height: 87px;
 		float: left;
 		margin: 16px 0.5rem;
 		position: relative;
@@ -51,5 +47,14 @@
 				color: inherit;
 			}
 		}
+	}
+}
+
+.countdown.circle-countdown {
+	max-height: 120px;
+	height: 120px;
+	.countdown-timer {
+		width: 87px;
+		height: 87px;
 	}
 }

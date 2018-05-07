@@ -62,7 +62,7 @@ Run `grunt` on the src folder to generate the dist files.
 - * [Table Sort](table.sort)
 
 ### Tabs
-- * [Tabs](tabs.controller)
+- [Tabs](tabs.controller)
 
 ### Tiles
 - [Tile](tile)

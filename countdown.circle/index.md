@@ -23,19 +23,11 @@ Displays a countdown using a specific start time which displays a message once t
 ## Code
 JS
 ```javascript
-var JACKNIFE = JACKNIFE || {};
-
-(function( $ ) {
-	$( document ).ready(function() {
-		// Initialize the objects
-		var $CircleCountdown = $('#Countdown');
-		if ($CircleCountdown.length) {
-			var CircleCountdown = new JACKNIFE.CircleCountdown($CircleCountdown);
-			CircleCountdown.init();
-			$CircleCountdown.data('CircleCountdown', CircleCountdown);
-		}
-	});
-})( jQuery );
+$('.circle-countdown').each(function() {
+	var CircleCountdown = new JACKNIFE.CircleCountdown($(this));
+	CircleCountdown.init();
+	$(this).data('CircleCountdown', CircleCountdown);
+});
 ```
 JS
 ```javascript
@@ -160,9 +152,7 @@ var JACKNIFE = JACKNIFE || {};
 ```
 CSS
 ```sass
-#Countdown {
-	max-height: 120px;
-	height: 120px;
+.countdown {
 	&.countdown-complete {
 		.countdown-int {
 			p {
@@ -190,8 +180,6 @@ CSS
 		}
 	}
 	.countdown-timer {
-		width: 87px;
-		height: 87px;
 		float: left;
 		margin: 16px 0.5rem;
 		position: relative;
@@ -215,10 +203,19 @@ CSS
 		}
 	}
 }
+
+.countdown.circle-countdown {
+	max-height: 120px;
+	height: 120px;
+	.countdown-timer {
+		width: 87px;
+		height: 87px;
+	}
+}
 ```
 HTML
 ```html
-<div id="Countdown" class="circle-countdown" data-start-time="June 10, 2017 10:00:00" data-end-time="December 10, 2017 17:00:00">
+<div class="countdown circle-countdown" data-start-time="June 10, 2017 10:00:00" data-end-time="December 10, 2017 17:00:00">
 	<div class="countdown-int">
 		<div id="CountdownDays" class="countdown-timer">
 			<div class="timer-int">
@@ -253,6 +250,7 @@ HTML
 - [Example 01](examples/01)
 
 ## Known Issues
+- Unique IDs required if multiple counters are required.
 
 ## Browser Support
 
