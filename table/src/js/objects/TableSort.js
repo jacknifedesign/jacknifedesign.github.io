@@ -118,7 +118,7 @@
 			if (date.length < 3) return;
 
 			for (var i = 0; i < 3; i++) {
-				var target = format.substr(i, 1);
+				var target = date_format.substr(i, 1);
 				if (target === 'D') {
 					day = date[i];
 				}else if (target === 'M') {
