@@ -3,8 +3,10 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 	.sort-toggle {
-		padding-right: 0.5rem;
-		position: relative;
+		span {
+			padding-right: 0.5rem;
+			position: relative;
+		}
 		&.active {
 			&.sort-asc,
 			&.sort-desc {
