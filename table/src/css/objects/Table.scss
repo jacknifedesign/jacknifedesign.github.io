@@ -4,7 +4,7 @@ table {
 	border-spacing: 0;
 	.sort-toggle {
 		span {
-			padding-right: 0.5rem;
+			padding-right: 0.75rem;
 			position: relative;
 		}
 		&.active {
@@ -34,6 +34,9 @@ table {
 					border-color: $black transparent transparent transparent;
 				}
 			}
+		}
+		&:hover {
+			cursor: pointer;
 		}
 	}
 }

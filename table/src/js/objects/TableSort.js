@@ -9,6 +9,7 @@
 		// Public Functions
 
 		this.init = function() {
+			console.log('init');
 			$toggles.on('click', _sort);
 		}
 
@@ -16,7 +17,7 @@
 
 		var _sort = function(e) {
 			e.preventDefault();
-
+console.log('sort');
 			var $target = $(this);
 
 			if ($target.hasClass('active')) {
