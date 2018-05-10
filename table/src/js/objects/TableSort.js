@@ -155,6 +155,7 @@
 
 			year = parseInt(year);
 			if( year < 100 ) { year = parseInt(year) + 2000; }
+			console.log(year);
 			return "" + String(year) + "" + String(month) + "" + String(day) + "";
 		}
 	}
