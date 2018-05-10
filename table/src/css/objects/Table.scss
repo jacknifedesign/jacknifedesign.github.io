@@ -2,6 +2,32 @@ table {
 	width: 100%;
 	border-collapse: collapse;
 	border-spacing: 0;
+	.sort-toggle {
+		padding-right: 0.5rem;
+		position: relative;
+		&.active {
+			&.sort-asc:after,
+			&.sort-desc:after {
+				content: '';
+				width: 0;
+				height: 0;
+				border-style: solid;
+				display: block;
+				position: absolute;
+				right: 0;
+				top: 50%;
+				@include transform(translate(0, -50%));
+			}
+			&.sort-asc:after {
+				border-width: 0 0.25rem 0.25rem 0.25rem;
+				border-color: transparent transparent $black transparent;
+			}
+			&.sort-desc:after {
+				border-width: 0.25rem 0.25rem 0 0.25rem;
+				border-color: $black transparent transparent transparent;
+			}
+		}
+	}
 }
 
 table, th, td {
