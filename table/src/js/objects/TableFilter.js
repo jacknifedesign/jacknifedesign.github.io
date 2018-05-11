@@ -6,8 +6,7 @@
 		var $triggers = $('select[data-filter-table="' + $el.attr('id') + '"]');
 
 		// Variables
-		var rows             = $('tr', $body).toArray();
-		var selected_filters = new Array();
+		var rows = $('tr', $body).toArray();
 		var selected_rows;
 
 		// Public Functions
@@ -30,15 +29,8 @@
 			selected_rows = new Array();
 
 			if (value === 'default') {
-				console.log('no value');
 				selected_rows = rows;
-				if (selected_filters[column]) {
-					selected_filters.splice(column);
-				}
 			}else {
-				console.log(value);
-				selected_filters[column] = value;
-				
 				for (var i = 0; i < rows.length; i++) {
 					var target = _get_value(rows[i], column);
 					if (value === target) {
@@ -46,7 +38,7 @@
 					}
 				}
 			}
-console.log(selected_filters);
+
 			_update_table();
 		}
 
