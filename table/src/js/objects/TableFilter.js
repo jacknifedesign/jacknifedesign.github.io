@@ -27,15 +27,22 @@
 			var column   = $trigger.data('filter-column');
 			var value    = $trigger.val();
 
-			if ($trigger.val()) {
-				console.log(value);
-			}else {
-				console.log('no value');
-			}
-
 			selected_rows = new Array();
 
-			console.log('filter');
+			if (value === 'default') {
+				console.log('no value');
+				selected_rows = rows;
+			}else {
+				console.log(value);
+				for (var i = 0; i < rows.length; i++) {
+					var target = _get_value(rows[i], column);
+					if (value === target) {
+						selected_rows.push(rows[i]);
+					}
+				}
+			}
+
+			_update_table(selected_rows);
 		}
 
 		var _get_value = function(row, index) {
@@ -44,7 +51,7 @@
 		}
 
 		var _update_table = function() {
-
+			console.log(selected_rows);
 		}
 	}
 })( jQuery );
