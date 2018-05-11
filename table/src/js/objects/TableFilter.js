@@ -52,8 +52,8 @@
 
 		var _update_table = function() {
 			console.log(selected_rows);
+			$body.empty();
 			for (var i = 0; i < selected_rows.length; i++) {
-				$body.empty();
 				$body.append(selected_rows[i]);
 			}
 		}
