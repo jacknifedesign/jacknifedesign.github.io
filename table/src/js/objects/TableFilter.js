@@ -42,7 +42,7 @@
 				}
 			}
 
-			_update_table(selected_rows);
+			_update_table();
 		}
 
 		var _get_value = function(row, index) {
@@ -52,6 +52,9 @@
 
 		var _update_table = function() {
 			console.log(selected_rows);
+			for (var i = 0; i < selected_rows.length; i++) {
+				$body.append(selected_rows[i]);
+			}
 		}
 	}
 })( jQuery );
