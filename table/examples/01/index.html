@@ -10,27 +10,27 @@
 	<div class="wrapper">
 		<section>
 			<div class="container">
-				<select>
+				<select data-filter-table="MealPlanTable" data-filter-column="1">
 					<option>All Meals</option>
-					<option value="1">Breakfast</option>
-					<option value="2">Brunch</option>
-					<option value="3">Lunch</option>
-					<option value="4">Dinner</option>
+					<option value="Breakfast">Breakfast</option>
+					<option value="Brunch">Brunch</option>
+					<option value="Lunch">Lunch</option>
+					<option value="Dinner">Dinner</option>
 				</select>
-				<select>
+				<select data-filter-table="MealPlanTable" data-filter-column="2">
 					<option>All Diets</option>
-					<option value="1">Omnivorous</option>
-					<option value="2">Pescatarian</option>
-					<option value="3">Vegetarian</option>
-					<option value="4">Vegan</option>
+					<option value="Omnivorous">Omnivorous</option>
+					<option value="Pescatarian">Pescatarian</option>
+					<option value="Vegetarian">Vegetarian</option>
+					<option value="Vegan">Vegan</option>
 				</select>
-				<table class="table-sort" data-date-format="MDY">
+				<table id="MealPlanTable" class="table-sort table-filter" data-date-format="MDY">
 					<thead>
 						<tr>
-							<th class="sort-toggle"><span>Recipe</span></th>
-							<th class="sort-toggle"><span>Meal</span></th>
-							<th class="sort-toggle"><span>Diet</span></th>
-							<th class="sort-toggle sort-asc active" data-sort="date"><span>Date</span></th>
+							<th class="sort-trigger"><span>Recipe</span></th>
+							<th class="sort-trigger"><span>Meal</span></th>
+							<th class="sort-trigger"><span>Diet</span></th>
+							<th class="sort-trigger sort-asc active" data-sort="date"><span>Date</span></th>
 						</tr>
 					</thead>
 					<tbody>

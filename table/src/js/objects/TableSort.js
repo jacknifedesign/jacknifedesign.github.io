@@ -1,9 +1,9 @@
 (function( $ ) {
 	var TableSort = JACKNIFE.TableSort = function TableSort(el) {
 		// Elements
-		var $el      = $(el);
-		var $toggles = $('.sort-toggle', $el);
-		var $body    = $('tbody', $el);
+		var $el       = $(el);
+		var $body     = $('tbody', $el);
+		var $triggers = $('.sort-trigger', $el);
 
 		// Variables
 		var direction   = 'DESC';
@@ -14,11 +14,11 @@
 		// Public Functions
 
 		this.init = function() {
-			$toggles.on('click', _click);
+			$triggers.on('click', _click);
 
 			// Set initial sort
-			var $target = $('.sort-toggle.active', $el)
-			if ($('.sort-toggle.active', $el)) {
+			var $target = $('.sort-trigger.active', $el)
+			if ($('.sort-trigger.active', $el)) {
 				_set_direction($target);
 				_set_type($target);
 				_sort($target);
@@ -50,7 +50,7 @@
 					direction = 'ASC';
 				}
 			}else {
-				$toggles.removeClass('active sort-desc sort-asc');
+				$triggers.removeClass('active sort-desc sort-asc');
 				$target.addClass('active sort-desc');
 				direction = 'DESC';
 			}
@@ -175,7 +175,7 @@
 			// If the year is 2 digits instead of 4, add 2000 to make it 4 digits
 			year = parseInt(year);
 			if( year < 100 ) { year = parseInt(year) + 2000; }
-			
+
 			return "" + String(year) + "" + String(month) + "" + String(day) + "";
 		}
 	}
