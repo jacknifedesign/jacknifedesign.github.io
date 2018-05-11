@@ -12,6 +12,7 @@
 		// Public Functions
 
 		this.init = function() {
+			console.log('init');
 			if ($triggers) {
 				$triggers.on('change', _filter);
 			}
@@ -26,7 +27,11 @@
 			var column   = $trigger.data('filter-column');
 			var value    = $trigger.val();
 
-			console.log(value);
+			if ($trigger.val()) {
+				console.log(value);
+			}else {
+				console.log('no value');
+			}
 
 			selected_rows = new Array();
 
