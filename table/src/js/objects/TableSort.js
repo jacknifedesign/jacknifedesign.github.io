@@ -9,7 +9,6 @@
 		var direction   = 'DESC';
 		var type        = 'default';
 		var date_format = ($el.data('date-format') ? $el.data('date-format').toUpperCase() : 'DMY');
-		var rows        = $('tr', $body).toArray();
 
 		// Public Functions
 
@@ -17,11 +16,15 @@
 			$triggers.on('click', _click);
 
 			// Set initial sort
-			var $target = $('.sort-trigger.active', $el)
-			if ($('.sort-trigger.active', $el)) {
+			var $target = $('.sort-trigger.active', $el);
+			if ($target) {
+				var rows  = $('tr', $body).toArray();
+				var index = $target.index();
+
 				_set_direction($target);
 				_set_type($target);
-				_sort($target);
+				rows = _sort(rows, index);
+				_update_table(rows);
 			}
 		}
 
@@ -31,10 +34,13 @@
 			e.preventDefault();
 
 			var $target = $(this);
+			var rows    = $('tr', $body).toArray();
+			var index   = $target.index();
 
 			_set_direction($target);
 			_set_type($target);
-			_sort($target);
+			rows = _sort(rows, index);
+			_update_table(rows);
 		}
 
 		var _set_direction = function($target) {
@@ -67,15 +73,19 @@
 			}
 		}
 
-		var _sort = function($target) {
+		var _sort = function(rows, index) {
 			// Sort the rows
-			var index = $target.index();
 			// Determine the order
 			rows = rows.sort(_compare(index));
 			// Determine the direction
 			if (direction === 'DESC') {
 				rows = rows.reverse();
 			}
+
+			return rows;
+		}
+
+		var _update_table = function(rows) {
 			// Draw the rows
 			for (var i = 0; i < rows.length; i++) {
 				$body.append(rows[i]);
