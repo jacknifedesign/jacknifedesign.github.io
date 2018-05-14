@@ -73,7 +73,7 @@
 				selected_rows = rows;
 			}
 
-			
+
 
 			_update_table(selected_rows);
 		}
@@ -113,7 +113,7 @@
 			// Determine the order
 			rows = rows.sort(_compare_cells(index));
 			// Determine the direction
-			if (direction === 'DESC') {
+			if (sort_direction === 'DESC') {
 				rows = rows.reverse();
 			}
 
