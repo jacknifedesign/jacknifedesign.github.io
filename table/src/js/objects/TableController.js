@@ -87,7 +87,7 @@
 					sort_directon = 'DESC';
 				}else if ($target.hasClass('sort-desc')) {
 					$target.removeClass('sort-desc');
-					$target.removeClass('sort-asc');
+					$target.addClass('sort-asc');
 					sort_direction = 'ASC';
 				}
 			}else {
