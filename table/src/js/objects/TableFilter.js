@@ -7,11 +7,13 @@
 
 		// Variables
 		var rows = $('tr', $body).toArray();
-		var selected_rows;
 
 		// Public Functions
 
 		this.init = function() {
+			// Store original rows
+			$el.data('OriginalRows', $('tr', $body).toArray());
+
 			if ($triggers) {
 				$triggers.on('change', _filter);
 			}
@@ -22,11 +24,10 @@
 		var _filter = function(e) {
 			e.preventDefault();
 
-			var $trigger = $(this);
-			var column   = $trigger.data('filter-column');
-			var value    = $trigger.val();
-
-			selected_rows = new Array();
+			var $trigger      = $(this);
+			var column        = $trigger.data('filter-column');
+			var value         = $trigger.val();
+			var selected_rows = new Array();
 
 			if (value === 'default') {
 				selected_rows = rows;
@@ -39,6 +40,11 @@
 				}
 			}
 
+			// Store the selected rows
+			$el.data('SelectedRows', rows);
+
+			$el.trigger('FilteredTable');
+
 			_update_table();
 		}
 
@@ -48,10 +54,11 @@
 		}
 
 		var _update_table = function() {
-			console.log(selected_rows);
+			var target_rows = $el.data('SelectedRows');
+
 			$body.empty();
-			for (var i = 0; i < selected_rows.length; i++) {
-				$body.append(selected_rows[i]);
+			for (var i = 0; i < target_rows.length; i++) {
+				$body.append(target_rows[i]);
 			}
 		}
 	}

@@ -13,7 +13,12 @@
 		// Public Functions
 
 		this.init = function() {
+			// Set listeners
 			$triggers.on('click', _click);
+			$el.on('FilteredTable', _filter);
+
+			// Store original rows
+			$el.data('OriginalRows', $('tr', $body).toArray());
 
 			// Set initial sort
 			var $target = $('.sort-trigger.active', $el);
@@ -81,6 +86,9 @@
 			if (direction === 'DESC') {
 				rows = rows.reverse();
 			}
+
+			// Store the selected rows
+			$el.data('SelectedRows', rows);
 
 			return rows;
 		}
