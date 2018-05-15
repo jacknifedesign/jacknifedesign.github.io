@@ -85,14 +85,25 @@
 			//var value  = $trigger.val();
 			var rows = new Array();
 
-			$triggers.each(function() {
-				var $trigger = $(this);
-				var values   = $trigger.val();
-				console.log(values);
-				for (var i = 0; i < original_rows.length; i++) {
+			for (var i = 0; i < original_rows.length; i++) {
+				var add_row = true;
+				$triggers.each(function() {
+					var $trigger = $(this);
+					var column   = $trigger.data('filter-column');
+					var values   = $trigger.val();
+					var target   = _get_cell_value(original_rows[i], column);
 
+					for (var j = 0; j < values.length; j++) {
+						if (values[j] != target && values[j] != 'default') {
+							add_row = false;
+						}
+					}
+				});
+
+				if (add_row === true) {
+					rows.push(original_rows[i]);
 				}
-			});
+			}
 
 			/*if (value === 'default') {
 				rows = original_rows;
