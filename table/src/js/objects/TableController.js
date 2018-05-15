@@ -96,7 +96,9 @@
 					var target     = _get_cell_value(original_rows[i], column);
 					var is_default = (values[0] != null || $.inArray('default', values) === -1 ? false : true);
 					var is_match   = ($.inArray(target, values) === -1 ? false : true);
-
+console.log(is_default);
+console.log(is_match);
+console.log('---');
 					// If the Select field does not match the default state (no value, or 'default' selected)
 					// If the target does not match a selected value
 					if (!is_default && !is_match) {
