@@ -26,7 +26,7 @@
 				if ($target) {
 					var index = $target.index();
 
-					_set_sort_direction($target);
+					//_set_sort_direction($target);
 					_set_sort_type($target);
 					selected_rows = _sort_rows(selected_rows, index);
 					_update_table(selected_rows);
@@ -64,16 +64,20 @@
 			if (value === 'default') {
 				selected_rows = original_rows;
 			}else {
-				for (var i = 0; i < selected_rows.length; i++) {
-					var target = _get_cell_value(selected_rows[i], column);
+				for (var i = 0; i < original_rows.length; i++) {
+					var target = _get_cell_value(original_rows[i], column);
 					if (value === target) {
-						rows.push(selected_rows[i]);
+						rows.push(original_rows[i]);
 					}
 				}
 				selected_rows = rows;
 			}
 
-
+			var $sort_target = $('.sort-trigger.active', $el);
+			if ($sort_target) {
+				var index = $sort_target.index();
+				selected_rows = _sort_rows(selected_rows, index);
+			}
 
 			_update_table(selected_rows);
 		}
