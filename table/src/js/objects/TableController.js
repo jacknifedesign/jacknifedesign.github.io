@@ -96,6 +96,7 @@
 					var target     = _get_cell_value(original_rows[i], column);
 					var is_default = (values[0] != null || $.inArray('default', values) != -1 ? true : false);
 					var is_match   = ($.inArray(target, values) != -1 ? true : false);
+console.log(values[0]);
 console.log(values[0] != null);
 console.log($.inArray('default', values) != -1);
 console.log('???');
