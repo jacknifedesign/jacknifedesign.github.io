@@ -94,6 +94,9 @@
 					var target   = _get_cell_value(original_rows[i], column);
 
 					for (var j = 0; j < values.length; j++) {
+						console.log(target);
+						console.log(values[j]);
+						console.log('---');
 						if (values[j] != target && values[j] != 'default') {
 							add_row = false;
 						}
