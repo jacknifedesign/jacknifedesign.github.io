@@ -86,7 +86,8 @@
 			var rows = new Array();
 
 			$triggers.each(function() {
-				var values = $trigger.val();
+				var $trigger = $(this);
+				var values   = $trigger.val();
 				console.log(values);
 				for (var i = 0; i < original_rows.length; i++) {
 
