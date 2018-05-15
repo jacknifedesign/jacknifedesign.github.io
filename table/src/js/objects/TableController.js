@@ -90,7 +90,7 @@
 				$triggers.each(function() {
 					var $trigger = $(this);
 					var column   = $trigger.data('filter-column');
-					var values   = $trigger.val();
+					var values   = $trigger.val().toArray();
 					var target   = _get_cell_value(original_rows[i], column);
 
 					for (var j = 0; j < values.length; j++) {
