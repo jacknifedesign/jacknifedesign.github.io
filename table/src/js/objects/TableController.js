@@ -50,6 +50,7 @@
 			_set_sort_direction($target);
 			_set_sort_type($target);
 			selected_rows = _sort_rows(selected_rows, index);
+			console.log(selected_rows);
 			_update_table(selected_rows);
 		}
 
@@ -225,7 +226,7 @@
 
 		var _update_table = function(rows) {
 			// Draw the rows
-			$body.empty();
+			//$body.empty();
 			for (var i = 0; i < rows.length; i++) {
 				$body.append(rows[i]);
 			}
