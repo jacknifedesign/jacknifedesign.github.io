@@ -84,21 +84,21 @@
 			var rows = new Array();
 
 			for (var i = 0; i < original_rows.length; i++) {
+				// Default state is to add the row
 				var add_row = true;
+				// Loop through Select fields and their selected values to find a reason not to add the row
 				$triggers.each(function() {
-					var $trigger = $(this);
-					var column   = $trigger.data('filter-column');
-					var values   = (Array.isArray($trigger.val()) ? $trigger.val() : new Array($trigger.val()));
-					var target   = _get_cell_value(original_rows[i], column);
+					// Find a reason not to add the row
+					var $trigger   = $(this);
+					var column     = $trigger.data('filter-column');
+					var values     = (Array.isArray($trigger.val()) ? $trigger.val() : new Array($trigger.val()));
+					var target     = _get_cell_value(original_rows[i], column);
+					var is_default = values[0] != null || $.inArray('default', values) === -1;
+					var is_match   = $.inArray(target, values) === -1;
 
-					/*for (var j = 0; j < values.length; j++) {
-						if (values[j] != 'default') {
-							add_row = false;
-						}
-					}*/
-// if there are selected values && if the cell value doesn't match the target value && if the selected values don't include default
-console.log(values);
-					if (values[0] != null && $.inArray(target, values) === -1 && $.inArray('default', values) === -1) {
+					// If the Select field does not match the default state (no value, or 'default' selected)
+					// If the target does not match a selected value
+					if (!is_default && !is_match) {
 						add_row = false;
 					}
 				});
