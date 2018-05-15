@@ -57,8 +57,9 @@
 			e.preventDefault();
 
 			var $trigger = $(this);
-			
-			selected_rows = _filter_rows($filter_triggers);
+			// Filter the rows
+			selected_rows = _filter_rows();
+			// Sort the rows
 			var $sort_target = $('.sort-trigger.active', $el);
 			if ($sort_target) {
 				var index = $sort_target.index();
@@ -80,14 +81,14 @@
 			return rows;
 		}
 
-		var _filter_rows = function($triggers) {
+		var _filter_rows = function() {
 			var rows = new Array();
 
 			for (var i = 0; i < original_rows.length; i++) {
 				// Default state is to add the row
 				var add_row = true;
 				// Loop through Select fields and their selected values to find a reason not to add the row
-				$triggers.each(function() {
+				$filter_triggers.each(function() {
 					// Find a reason not to add the row
 					var $trigger   = $(this);
 					var column     = $trigger.data('filter-column');
@@ -102,7 +103,7 @@
 						add_row = false;
 					}
 				});
-
+				// Add row if it didn't conflict with any selected values on all filters
 				if (add_row === true) {
 					rows.push(original_rows[i]);
 				}
