@@ -73,11 +73,11 @@
 				selected_rows = rows;
 			}
 
-			var $sort_target = $('.sort-trigger.active', $el);
+			/*var $sort_target = $('.sort-trigger.active', $el);
 			if ($sort_target) {
 				var index = $sort_target.index();
 				selected_rows = _sort_rows(selected_rows, index);
-			}
+			}*/
 
 			_update_table(selected_rows);
 		}
