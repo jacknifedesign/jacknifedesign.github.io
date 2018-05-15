@@ -57,12 +57,36 @@
 			e.preventDefault();
 
 			var $trigger = $(this);
-			var column   = $trigger.data('filter-column');
-			var value    = $trigger.val();
-			var rows     = new Array();
+			
+			selected_rows = _filter_rows($trigger);
+			var $sort_target = $('.sort-trigger.active', $el);
+			if ($sort_target) {
+				var index = $sort_target.index();
+				selected_rows = _sort_rows(selected_rows, index);
+			}
+
+			_update_table(selected_rows);
+		}
+
+		var _sort_rows = function(rows, index) {
+			// Sort the rows
+			// Determine the order
+			rows = rows.sort(_compare_cells(index));
+			// Determine the direction
+			if (sort_direction === 'DESC') {
+				rows = rows.reverse();
+			}
+
+			return rows;
+		}
+
+		var _filter_rows = function($trigger) {
+			var column = $trigger.data('filter-column');
+			var value  = $trigger.val();
+			var rows   = new Array();
 
 			if (value === 'default') {
-				selected_rows = original_rows;
+				rows = original_rows;
 			}else {
 				for (var i = 0; i < original_rows.length; i++) {
 					var target = _get_cell_value(original_rows[i], column);
@@ -70,16 +94,8 @@
 						rows.push(original_rows[i]);
 					}
 				}
-				selected_rows = rows;
 			}
-
-			/*var $sort_target = $('.sort-trigger.active', $el);
-			if ($sort_target) {
-				var index = $sort_target.index();
-				selected_rows = _sort_rows(selected_rows, index);
-			}*/
-
-			_update_table(selected_rows);
+			return rows;
 		}
 
 		var _set_sort_direction = function($target) {
@@ -110,18 +126,6 @@
 			}else {
 				sort_type = 'default';
 			}
-		}
-
-		var _sort_rows = function(rows, index) {
-			// Sort the rows
-			// Determine the order
-			rows = rows.sort(_compare_cells(index));
-			// Determine the direction
-			if (sort_direction === 'DESC') {
-				rows = rows.reverse();
-			}
-
-			return rows;
 		}
 
 		var _compare_cells = function(index) {
