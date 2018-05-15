@@ -81,8 +81,6 @@
 		}
 
 		var _filter_rows = function($triggers) {
-			//var column = $trigger.data('filter-column');
-			//var value  = $trigger.val();
 			var rows = new Array();
 
 			for (var i = 0; i < original_rows.length; i++) {
@@ -94,9 +92,6 @@
 					var target   = _get_cell_value(original_rows[i], column);
 
 					for (var j = 0; j < values.length; j++) {
-						console.log(target);
-						console.log(values[j]);
-						console.log('---');
 						if (values[j] != target && values[j] != 'default') {
 							add_row = false;
 						}
@@ -107,17 +102,6 @@
 					rows.push(original_rows[i]);
 				}
 			}
-
-			/*if (value === 'default') {
-				rows = original_rows;
-			}else {
-				for (var i = 0; i < original_rows.length; i++) {
-					var target = _get_cell_value(original_rows[i], column);
-					if (value === target) {
-						rows.push(original_rows[i]);
-					}
-				}
-			}*/
 			return rows;
 		}
 
