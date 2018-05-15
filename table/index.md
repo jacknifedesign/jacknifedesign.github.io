@@ -15,329 +15,405 @@ layout: default
 ## Options
 
 ## Code
-Gusto JS
+App JS
 ```javascript
-$('.careers-table').each(function() {
-	var table = new GUSTO.CareersTable($(this));
-	table.init();
-});
+var JACKNIFE = JACKNIFE || {};
+
 (function( $ ) {
-	var CareersTable = GUSTO.CareersTable = function CareersTable(el) {
+	$( document ).ready(function() {
+		$('.table-filter, .table-sort').each(function() {
+			var TableController = new JACKNIFE.TableController($(this));
+			TableController.init();
+			$(this).data('TableController', TableController);
+		});
+	});
+})( jQuery );
+```
+JS
+```javascript
+(function( $ ) {
+	var TableController = JACKNIFE.TableController = function TableController(el) {
+
 		// Elements
 		var $el              = $(el);
-		var $table           = $('table', $el);
-		var $select_position = $('#CareerPositionSelect', $el);
-		var $select_team     = $('#CareerTeamSelect', $el);
-		var $select_location = $('#CareerLocationSelect', $el);
-		var $select_city     = $('#CareerCitySelect', $el);
-		var $external_filter = $('[data-filter-target]');
+		var $body            = $('tbody', $el);
+		var $sort_triggers   = $('.sort-trigger', $el);
+		var $filter_triggers = $('select[data-filter-table="' + $el.attr('id') + '"]');
 
 		// Variables
-		var rows             = new Array();
-		var filter_positions = new Array();
-		var filter_teams     = new Array();
-		var filter_locations = new Array();
-		var filter_cities    = new Array();
-		var active_position  = 'All Positions';
-		var active_team      = 'All Teams';
-		var active_location  = 'All Locations';
-		var active_city      = 'All Cities';
+		var sort_direction = 'DESC';
+		var sort_type      = 'default';
+		var date_format    = ($el.data('date-format') ? $el.data('date-format').toUpperCase() : 'DMY');
+		var original_rows  = $('tr', $body).toArray();
+		var selected_rows  = original_rows;
 
 		// Public Functions
-
 		this.init = function() {
-			$('tr', $table).each(function() {
-				rows.push($(this)[0].outerHTML);
-			});
+			// Initialize Sorters
+			if ($sort_triggers) {
+				// Set listeners
+				$sort_triggers.on('click', _sort_click);
 
-			$('option', $select_position).each(function() {
-				var id   = $(this).val();
-				var text = $(this).text();
-				filter_positions.push(new Array(id, text));
-			});
+				// Set initial sort
+				var $target = $('.sort-trigger.active', $el);
+				if ($target) {
+					var index = $target.index();
 
-			$('option', $select_team).each(function() {
-				var id   = $(this).val();
-				var text = $(this).text();
-				filter_teams.push(new Array(id, text));
-			});
+					//_set_sort_direction($target);
+					_set_sort_type($target);
+					selected_rows = _sort_rows(selected_rows, index);
+					_update_table(selected_rows);
+				}
+			}
 
-			$('option', $select_location).each(function() {
-				var id   = $(this).val();
-				var text = $(this).text();
-
-				filter_locations.push(new Array(id, text));
-			});
-
-			$('option', $select_city).each(function() {
-				var id   = $(this).val();
-				var text = $(this).text();
-				filter_cities.push(new Array(id, text));
-			});
-
-			// Event Handlers
-			$select_position.on('change', _filterPosition);
-			$select_team.on('change', _filterTeam);
-			$select_location.on('change', _filterLocation);
-			$select_city.on('change', _filterCity);
-			$external_filter.on('click', _updateFilter);
-
-			_refreshListeners();
+			// Initialize Filters
+			if ($filter_triggers) {
+				// Set listeners
+				$filter_triggers.on('change', _filter_change);
+			}
 		}
 
 		// Private Functions
-		var _updateFilter = function(e) {
+		var _sort_click = function(e) {
 			e.preventDefault();
 
-			var target  = $(this).data('filter-target');
-			var value   = $(this).data('filter-value');
-			var $select = $('#' + target);
+			var $target = $(this);
+			var index   = $target.index();
 
-			$select.val(value).change();
-
-			$('.careers-content').css('display', 'block');
-			var offset = $('.careers-content').offset().top;
-
-			$("html, body").animate({ scrollTop: offset + "px" }, 500);
+			_set_sort_direction($target);
+			_set_sort_type($target);
+			selected_rows = _sort_rows(selected_rows, index);
+			_update_table(selected_rows);
 		}
 
-		var _filterPosition = function(e) {
-			active_position = $('option:selected', this).text();
+		var _filter_change = function(e) {
+			e.preventDefault();
 
-			_updateTable();
-		}
-
-		var _filterTeam = function(e) {
-			var id   = $(this).val();
-
-			active_team = $('option:selected', this).text();
-			active_position = 'All Positions';
-
-			// Update Position Select values
-			$select_position.empty();
-			if (active_team !== 'All Teams') {
-				$select_position.append($("<option></option>").text('All Positions'));
-			}
-			for (var i=0; i<filter_positions.length; i++) {
-				if (id === filter_positions[i][0] || active_team === 'All Teams') {
-					$select_position.append($("<option></option>").attr("value", filter_positions[i][0]).text(filter_positions[i][1]));
-				}
+			var $trigger = $(this);
+			// Filter the rows
+			selected_rows = _filter_rows();
+			// Sort the rows
+			var $sort_target = $('.sort-trigger.active', $el);
+			if ($sort_target) {
+				var index = $sort_target.index();
+				selected_rows = _sort_rows(selected_rows, index);
 			}
 
-			_updateTable();
+			_update_table(selected_rows);
 		}
 
-		var _filterLocation = function(e) {
-			active_location = $('option:selected', this).text();
-
-			_updateTable();
-		}
-
-		var _filterCity = function(e) {
-			var id = $(this).val();
-
-			active_city = $('option:selected', this).text();
-			active_location = 'All Locations';
-
-			// Update Location Select values
-			$select_location.empty();
-			if (active_city !== 'All Cities') {
-				$select_location.append($("<option></option>").text('All Locations'));
-			}
-			for (var i=0; i<filter_locations.length; i++) {
-				if (id === filter_locations[i][0] || active_city === 'All Cities') {
-					$select_location.append($("<option></option>").attr("value", filter_locations[i][0]).text(filter_locations[i][1]));
-				}
+		var _sort_rows = function(rows, index) {
+			// Sort the rows
+			// Determine the order
+			rows = rows.sort(_compare_cells(index));
+			// Determine the direction
+			if (sort_direction === 'DESC') {
+				rows = rows.reverse();
 			}
 
-			_updateTable();
+			return rows;
 		}
 
-		var _updateTable = function() {
-			var target_rows = rows;
+		var _filter_rows = function() {
+			var rows = new Array();
 
-			// Update Table rows
-			$('tr', $table).off();
-			$table.empty();
+			for (var i = 0; i < original_rows.length; i++) {
+				// Default state is to add the row
+				var add_row = true;
+				// Loop through Select fields and their selected values to find a reason not to add the row
+				$filter_triggers.each(function() {
+					// Find a reason not to add the row
+					var $trigger   = $(this);
+					var column     = $trigger.data('filter-column');
+					var values     = (Array.isArray($trigger.val()) ? $trigger.val() : new Array($trigger.val()));
+					var target     = _get_cell_value(original_rows[i], column);
+					var is_default = (values[0] === null || $.inArray('default', values) != -1 ? true : false);
+					var is_match   = ($.inArray(target, values) != -1 ? true : false);
 
-			if (active_position !== 'All Positions') {
-				var target = active_position;
-				var temp_rows = new Array();
-				for (var i=0; i<target_rows.length; i++) {
-					if (target_rows[i].indexOf(target) >= 0) {
-						temp_rows.push(target_rows[i]);
+					// If the Select field does not match the default state (no value, or 'default' selected)
+					// If the target does not match a selected value
+					if (!is_default && !is_match) {
+						add_row = false;
 					}
+				});
+				// Add row if it didn't conflict with any selected values on all filters
+				if (add_row === true) {
+					rows.push(original_rows[i]);
 				}
-				target_rows = temp_rows;
 			}
+			return rows;
+		}
 
-			if (active_team !== 'All Teams') {
-				var target = active_team;
-				var temp_rows = new Array();
-				for (var i=0; i<target_rows.length; i++) {
-					if (target_rows[i].indexOf(target) >= 0) {
-						temp_rows.push(target_rows[i]);
-					}
+		var _set_sort_direction = function($target) {
+			// Determine if the sort direction is ASC or DESC
+			if ($target.hasClass('active')) {
+				if ($target.hasClass('sort-asc')) {
+					$target.removeClass('sort-asc');
+					$target.addClass('sort-desc');
+					sort_direction = 'DESC';
+				}else if ($target.hasClass('sort-desc')) {
+					$target.removeClass('sort-desc');
+					$target.addClass('sort-asc');
+					sort_direction = 'ASC';
 				}
-				target_rows = temp_rows;
-			}
-
-			if (active_location !== 'All Locations') {
-				var target = active_location;
-				var temp_rows = new Array();
-				for (var i=0; i<target_rows.length; i++) {
-					if (target_rows[i].indexOf(target) >= 0) {
-						temp_rows.push(target_rows[i]);
-					}
-				}
-				target_rows = temp_rows;
-			}
-
-			if (active_city !== 'All Cities') {
-				var target = active_city;
-				var temp_rows = new Array();
-				for (var i=0; i<target_rows.length; i++) {
-					if (target_rows[i].indexOf(target) >= 0) {
-						temp_rows.push(target_rows[i]);
-					}
-				}
-				target_rows = temp_rows;
-			}
-
-			if (target_rows.length <= 0) {
-				$el.addClass('no-results');
 			}else {
-				$el.removeClass('no-results');
-				for (var i=0; i<target_rows.length; i++) {
-					$table.append(target_rows[i]);
+				$sort_triggers.removeClass('active sort-desc sort-asc');
+				$target.addClass('active sort-desc');
+				sort_direction = 'DESC';
+			}
+		}
+
+		var _set_sort_type = function($target) {
+			// Set the type of sorting
+			// 'date' and 'default' accepted
+			// 'default' covers alphanumeric
+			if ($target.data('sort')) {
+				sort_type = $target.data('sort');
+			}else {
+				sort_type = 'default';
+			}
+		}
+
+		var _compare_cells = function(index) {
+			return function(a, b) {
+				// Get the value of the cell
+				var valA = _get_cell_value(a, index);
+				var valB = _get_cell_value(b, index);
+
+				if (sort_type === 'date') {
+					// Sort by Date
+					valA = _format_date(valA);
+					valB = _format_date(valB);
+					return valA - valB;
+				}else if ($.isNumeric(valA) && $.isNumeric(valB)) {
+					// Sort by Number
+					return valA = valB;
+				}else {
+					// Sort by Alphabet
+					valA = valA.toString();
+					valB = valB.toString();
+					return valA.localeCompare(valB);
+				}
+			}
+		}
+
+		var _get_cell_value = function(row, index) {
+			// Get the value of the cell
+			return $('td', row).eq(index).text();
+		}
+
+		var _format_date = function(str) {
+			// Standardize the dates regardless of format
+			var date;
+			var day;
+			var month;
+			var year;
+
+			// Remove special characters from the beginning and end of the string
+			str = str.toLowerCase();
+			str = str.replace(/^[^a-z0-9]*/, '');
+			str = str.replace(/[^a-z0-9]*$/, '');
+			// Return if all characters have been removed
+			if (str.length < 1) return;
+			// Change any special characters to a comma
+			str = str.replace(/[^a-z0-9]+/g, ',');
+
+			date = str.split(',');
+			// Return if there aren't enough values for DMY
+			if (date.length < 3) return;
+			// Match the array to the chosen Date format
+			for (var i = 0; i < 3; i++) {
+				var target = date_format.substr(i, 1);
+				if (target === 'D') {
+					day = date[i];
+				}else if (target === 'M') {
+					month = date[i];
+				}else if (target === 'Y') {
+					year = date[i];
 				}
 			}
 
-			_refreshListeners();
+			// Remove 0 from the start of the number to prevent double 0 for numbers 1-9
+			// Add 0 to the start of numbers 1-9
+			day = day.replace(/^0/, '');
+			if (day < 10) day = '0' + day;
+
+			// If the month is an a-z string, swap it for a number
+			var pattern = /[a-z]/;
+			if (pattern.test(month)) {
+				// Convert month to 3 character string
+				month = month.substr(0, 3);
+				// Convert 3 character string to number
+				switch (month) {
+					case 'jan' : month = String(1); break;
+					case 'feb' : month = String(2); break;
+					case 'mar' : month = String(3); break;
+					case 'apr' : month = String(4); break;
+					case 'may' : month = String(5); break;
+					case 'jun' : month = String(6); break;
+					case 'jul' : month = String(7); break;
+					case 'aug' : month = String(8); break;
+					case 'sep' : month = String(9); break;
+					case 'oct' : month = String(10); break;
+					case 'nov' : month = String(11); break;
+					case 'dec' : month = String(12); break;
+					default    : month = String(0);
+				}
+			}
+
+			// Remove 0 from the start of the number to prevent double 0 for numbers 1-9
+			// Add 0 to the start of numbers 1-9
+			month = month.replace(/^0/, '');
+			if (month < 10) month = '0' + month;
+
+			// If the year if 2 digits instead of 4, add 2000 to make it 4 digits
+			year = parseInt(year);
+			if (year < 100) year = parseInt(year) + 2000;
+
+			return '' + String(year) + '' + String(month) + '' + String(day) + '';
 		}
 
-		var _refreshListeners = function() {
-			$('tr', $table).on('click', _navigateToCareer);
-		}
-
-		var _navigateToCareer = function(e) {
-			if (window.innerWidth > 960) {
-				window.document.location = $(this).data('url');
+		var _update_table = function(rows) {
+			// Draw the rows
+			$body.empty();
+			for (var i = 0; i < rows.length; i++) {
+				$body.append(rows[i]);
 			}
 		}
 	}
 })( jQuery );
 ```
-Gusto HTML
-```html
-<section>
-<ul id="CareersTiles" class="block-menu square small-block-grid-2">
-<li><a href="#" data-filter-target="CareerCitySelect" data-filter-value="1257"><img src="http://gusto54.com/wp-content/uploads/2016/08/venice.jpg"><h2>Los Angeles</h2></a></li><li><a href="#" data-filter-target="CareerCitySelect" data-filter-value="725"><img src="http://gusto54.com/wp-content/uploads/2016/08/Toronto-640x640.jpg"><h2>Toronto</h2></a></li>    </ul>
-</section>
-<div class="careers-table">
-<div class="table-filters col-wrap">
-<div id="TableFilterPosition" class="table-filter col clearfix">
-<h3>Position</h3>
-<select id="CareerPositionSelect">
-<option>All Positions</option>
-<option value="57">Assistant General Manager</option><option value="37">Barback</option><option value="37">Bartender</option><option value="67">Busser</option><option value="40">Catering Cook</option><option value="57">Chef de Cuisine</option><option value="49">Communications Coordinator</option><option value="49">Director of Culinary Operations</option><option value="44">Dishwasher</option><option value="40">Driver</option><option value="57">Executive Chef</option><option value="57">Floor Manager</option><option value="67">Food Runner</option><option value="57">General Manager</option><option value="49">Hiring &amp; Training Manager</option><option value="55">Host</option><option value="44">Line Cook</option><option value="44">Pizzaiolo</option><option value="44">Prep Cook</option><option value="57">President</option><option value="49">Restaurant Expansion Manager</option><option value="40">Sales &amp; Events Manager</option><option value="65">Server</option><option value="49">Social Media Manager</option><option value="57">Sous Chef</option>                        </select>
-</div>
-<div id="TableFilterTeam" class="table-filter col clearfix">
-<h3>Team</h3>
-<select id="CareerTeamSelect">
-<option>All Teams</option>
-<option value="37">Bar Team</option><option value="40">Catering</option><option value="44">Culinary Team</option><option value="49">Home Office/Executive Level</option><option value="55">Host Team</option><option value="57">Management</option><option value="65">Service Team</option><option value="67">Support Team</option>                        </select>
-</div>
-<div id="TableFilterLocation" class="table-filter col clearfix">
-<h3>Location</h3>
-<select id="CareerLocationSelect">
-<option>All Locations</option>
-<option value="725">Catering &amp; Commissary</option><option value="725">Chubby's Jamaican Kitchen</option><option value="725">Coming Soon</option><option value="1257">Felix Trattoria</option><option value="725">Gusto 101</option><option value="725">Gusto 501</option><option value="725">Gusto 54</option><option value="725">Kiin</option><option value="725">Nervosa</option><option value="725">Pai Toronto</option>                        </select>
-</div>
-<div id="TableFilterCity" class="table-filter col clearfix">
-<h3>City</h3>
-<select id="CareerCitySelect">
-<option>All Cities</option>
-<option value="1257">Los Angeles</option><option value="725">Toronto</option>                        </select>
-</div>
-<div id="TableFilterDate" class="table-filter col clearfix">
-<h3>Date Posted</h3>
-</div>
-</div>
-<table><tbody><tr data-url="http://gusto54.com/join-our-team/pizzaiolo/"><td>Pizzaiolo</td><td>Culinary Team</td><td>Gusto 101</td><td>Toronto</td><td>July 19</td><td class="mobi-table"><h4>Pizzaiolo</h4><span>Gusto 101</span><br>Culinary Team<br>Posted July 19<br><a href="http://gusto54.com/join-our-team/pizzaiolo/" class="button">View Job</a></td></tr><tr data-url="http://gusto54.com/join-our-team/2105/"><td>Prep Cook</td><td>Culinary Team</td><td>Catering &amp; Commissary</td><td>Toronto</td><td>July 17</td><td class="mobi-table"><h4>Prep Cook</h4><span>Catering &amp; Commissary</span><br>Culinary Team<br>Posted July 17<br><a href="http://gusto54.com/join-our-team/2105/" class="button">View Job</a></td></tr><tr data-url="http://gusto54.com/join-our-team/sous-chef/"><td>Sous Chef</td><td>Culinary Team, Management</td><td>Gusto 54</td><td>Toronto</td><td>July 12</td><td class="mobi-table"><h4>Sous Chef</h4><span>Gusto 54</span><br>Culinary Team, Management<br>Posted July 12<br><a href="http://gusto54.com/join-our-team/sous-chef/" class="button">View Job</a></td></tr><tr data-url="http://gusto54.com/join-our-team/floor-manager/"><td>Floor Manager</td><td>Management</td><td>Gusto 101</td><td>Toronto</td><td>July 5</td><td class="mobi-table"><h4>Floor Manager</h4><span>Gusto 101</span><br>Management<br>Posted July 5<br><a href="http://gusto54.com/join-our-team/floor-manager/" class="button">View Job</a></td></tr><tr data-url="http://gusto54.com/join-our-team/dishwasher/"><td>Dishwasher</td><td>Culinary Team</td><td>Gusto 101</td><td>Toronto</td><td>July 5</td><td class="mobi-table"><h4>Dishwasher</h4><span>Gusto 101</span><br>Culinary Team<br>Posted July 5<br><a href="http://gusto54.com/join-our-team/dishwasher/" class="button">View Job</a></td></tr><tr data-url="http://gusto54.com/join-our-team/line-cook-2/"><td>Line Cook</td><td>Culinary Team</td><td>Gusto 101</td><td>Toronto</td><td>July 4</td><td class="mobi-table"><h4>Line Cook</h4><span>Gusto 101</span><br>Culinary Team<br>Posted July 4<br><a href="http://gusto54.com/join-our-team/line-cook-2/" class="button">View Job</a></td></tr><tr data-url="http://gusto54.com/join-our-team/barback/"><td>Barback</td><td>Bar Team</td><td>Gusto 101</td><td>Toronto</td><td>July 4</td><td class="mobi-table"><h4>Barback</h4><span>Gusto 101</span><br>Bar Team<br>Posted July 4<br><a href="http://gusto54.com/join-our-team/barback/" class="button">View Job</a></td></tr><tr data-url="http://gusto54.com/join-our-team/prep-cook/"><td>Prep Cook</td><td>Culinary Team</td><td>Gusto 101</td><td>Toronto</td><td>July 3</td><td class="mobi-table"><h4>Prep Cook</h4><span>Gusto 101</span><br>Culinary Team<br>Posted July 3<br><a href="http://gusto54.com/join-our-team/prep-cook/" class="button">View Job</a></td></tr></tbody></table>                <p>Sorry, there are no matching results.</p>
-</div>
-```
-Gusto CSS
+CSS
 ```sass
-.careers-table {
-	margin-top: 4rem;
-	table {
-		width: 100%;
-		table-layout: fixed;
-		background: none;
-		border: 0;
-		margin: 0;
-		tr {
+table {
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	.sort-trigger {
+		span {
+			padding-right: 0.75rem;
+			position: relative;
+		}
+		&.active {
+			&.sort-asc,
+			&.sort-desc {
+				span:after {
+					content: '';
+					width: 0;
+					height: 0;
+					border-style: solid;
+					display: block;
+					position: absolute;
+					right: 0;
+					top: 50%;
+					@include transform(translate(0, -50%));
+				}
+			}
+			&.sort-asc {
+				span:after {
+					border-width: 0 0.25rem 0.25rem 0.25rem;
+					border-color: transparent transparent $black transparent;
+				}
+			}
+			&.sort-desc {
+				span:after {
+					border-width: 0.25rem 0.25rem 0 0.25rem;
+					border-color: $black transparent transparent transparent;
+				}
+			}
+		}
+		&:hover {
 			cursor: pointer;
-			&:nth-of-type(odd) {
-				background: rgba(128, 128, 128, 0.1);
-			}
-			&:nth-of-type(even) {
-				background: none;
-			}
-			&:nth-of-type(odd),
-			&:nth-of-type(even) {
-				&:hover {
-					background: $red;
-					td {
-						color: #FFFFFF;
-					}
-				}
-			}
-			td {
-				vertical-align: middle;
-				font-size: 1.125rem;
-				font-weight: 500;
-				color: $gray;
-				font-family: "PFDinTextCompPro-Regular", sans-serif;
-				height: 72px;
-				padding: 10px 20px;
-				&.mobi-table {
-					display: none;
-				}
-			}
-		}
-	}
-	p {
-		display: none;
-	}
-	&.no-results {
-		table {
-			display: none;
-		}
-		p {
-			display: block;
 		}
 	}
 }
-.table-filters {
-	width: 102%;
-	left: -1%;
-	position: relative;
-	.table-filter {
-		padding: 0 0.5rem 1rem 0.5rem;
-		h3 {
-			text-align: left;
-			font-size: 1.125rem;
-			margin-bottom: 0.75rem;
-		}
-	}
+
+table, th, td {
+	border: 1px solid $black;
 }
+```
+HTML
+```html
+<select data-filter-table="MealPlanTable" data-filter-column="1">
+	<option value="default">All Meals</option>
+	<option value="Breakfast">Breakfast</option>
+	<option value="Brunch">Brunch</option>
+	<option value="Lunch">Lunch</option>
+	<option value="Dinner">Dinner</option>
+</select>
+<select data-filter-table="MealPlanTable" data-filter-column="2" multiple>
+	<option value="default">All Diets</option>
+	<option value="Omnivorous">Omnivorous</option>
+	<option value="Pescatarian">Pescatarian</option>
+	<option value="Vegetarian">Vegetarian</option>
+	<option value="Vegan">Vegan</option>
+</select>
+<table id="MealPlanTable" class="table-sort table-filter" data-date-format="MDY">
+	<thead>
+		<tr>
+			<th class="sort-trigger"><span>Recipe</span></th>
+			<th class="sort-trigger"><span>Meal</span></th>
+			<th class="sort-trigger"><span>Diet</span></th>
+			<th class="sort-trigger sort-asc active" data-sort="date"><span>Date</span></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>Assorted Cereal w/ Almond Milk</td>
+			<td>Breakfast</td>
+			<td>Vegan</td>
+			<td>07-19-18</td>
+		</tr>
+		<tr>
+			<td>Eggs Benedict</td>
+			<td>Brunch</td>
+			<td>Omnivorous</td>
+			<td>07/17/17</td>
+		</tr>
+		<tr>
+			<td>Pheasant Pot Pie</td>
+			<td>Dinner</td>
+			<td>Omnivorous</td>
+			<td>17/12/17</td>
+		</tr>
+		<tr>
+			<td>Warm Lentil and Beet Salad</td>
+			<td>Dinner</td>
+			<td>Vegan</td>
+			<td>July 5, 2018</td>
+		</tr>
+		<tr>
+			<td>Wild Mushroom Risotto</td>
+			<td>Dinner</td>
+			<td>Vegetarian</td>
+			<td>July 5, 2017</td>
+		</tr>
+		<tr>
+			<td>Grilled Chicken and Avocado Club Sandwich</td>
+			<td>Lunch</td>
+			<td>Omnivorous</td>
+			<td>July 4, 2017</td>
+		</tr>
+		<tr>
+			<td>Smoked Salmon Sandwich</td>
+			<td>Lunch</td>
+			<td>Pescatarian</td>
+			<td>July 4, 2018</td>
+		</tr>
+		<tr>
+			<td>Grilled Cheese</td>
+			<td>Lunch</td>
+			<td>Vegetarian</td>
+			<td>July 3, 2018</td>
+		</tr>
+	</tbody>
+</table>
 ```
 ## Examples
 - [Example 01](examples/01)
 
 ## Known Issues
+- Filters do not have a state for no results
 
 ## Browser Support
 

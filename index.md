@@ -58,7 +58,7 @@ Run `grunt` on the src folder to generate the dist files.
 - * [Preload Item](preload.item)
 
 ### Tables
-- * [Table](table)
+- [Table](table)
 
 ### Tabs
 - [Tabs](tabs.controller)
