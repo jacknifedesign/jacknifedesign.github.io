@@ -58,7 +58,7 @@
 
 			var $trigger = $(this);
 			
-			selected_rows = _filter_rows($trigger);
+			selected_rows = _filter_rows($filter_triggers);
 			var $sort_target = $('.sort-trigger.active', $el);
 			if ($sort_target) {
 				var index = $sort_target.index();
@@ -80,12 +80,20 @@
 			return rows;
 		}
 
-		var _filter_rows = function($trigger) {
-			var column = $trigger.data('filter-column');
-			var value  = $trigger.val();
-			var rows   = new Array();
+		var _filter_rows = function($triggers) {
+			//var column = $trigger.data('filter-column');
+			//var value  = $trigger.val();
+			var rows = new Array();
 
-			if (value === 'default') {
+			$triggers.each(function() {
+				var values = $trigger.val();
+				console.log(values);
+				for (var i = 0; i < original_rows.length; i++) {
+
+				}
+			});
+
+			/*if (value === 'default') {
 				rows = original_rows;
 			}else {
 				for (var i = 0; i < original_rows.length; i++) {
@@ -94,7 +102,7 @@
 						rows.push(original_rows[i]);
 					}
 				}
-			}
+			}*/
 			return rows;
 		}
 
