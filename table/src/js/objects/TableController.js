@@ -94,8 +94,8 @@
 					var column     = $trigger.data('filter-column');
 					var values     = (Array.isArray($trigger.val()) ? $trigger.val() : new Array($trigger.val()));
 					var target     = _get_cell_value(original_rows[i], column);
-					var is_default = (values[0] != null || $.inArray('default', values) === -1);
-					var is_match   = ($.inArray(target, values) === -1);
+					var is_default = (values[0] != null || $.inArray('default', values) === -1 ? false : true);
+					var is_match   = ($.inArray(target, values) === -1 ? false : true);
 
 					// If the Select field does not match the default state (no value, or 'default' selected)
 					// If the target does not match a selected value
