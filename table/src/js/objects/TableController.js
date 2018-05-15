@@ -91,10 +91,14 @@
 					var values   = (Array.isArray($trigger.val()) ? $trigger.val() : new Array($trigger.val()));
 					var target   = _get_cell_value(original_rows[i], column);
 
-					for (var j = 0; j < values.length; j++) {
-						if (values[j] != target && values[j] != 'default') {
+					/*for (var j = 0; j < values.length; j++) {
+						if (values[j] != 'default') {
 							add_row = false;
 						}
+					}*/
+
+					if (values.length > 0 && $.inArray(target, values) === -1 && $.inArray('default', values) === -1) {
+						add_row = false;
 					}
 				});
 
