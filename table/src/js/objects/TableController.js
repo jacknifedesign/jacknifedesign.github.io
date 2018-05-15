@@ -98,8 +98,7 @@
 					}*/
 // if there are selected values && if the cell value doesn't match the target value && if the selected values don't include default
 console.log(values);
-console.log(values.length);
-					if (values.length > 0 && $.inArray(target, values) === -1 && $.inArray('default', values) === -1) {
+					if (values[0] != null && $.inArray(target, values) === -1 && $.inArray('default', values) === -1) {
 						add_row = false;
 					}
 				});
