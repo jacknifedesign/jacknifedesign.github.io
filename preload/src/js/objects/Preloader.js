@@ -114,7 +114,6 @@ var JACKNIFE = JACKNIFE || {};
 		}
 
 		var _destroy = function() {
-			return;
 			// Remove the element
 			$el.off();
 			$el.remove();
