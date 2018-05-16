@@ -54,7 +54,7 @@ Run `grunt` on the src folder to generate the dist files.
 - * [Parallax](parallax)
 
 ### Preloaders
-- * [Preload](preload)
+- [Preload](preload)
 
 ### Tables
 - [Table](table)
