@@ -110,10 +110,11 @@ var JACKNIFE = JACKNIFE || {};
 			$(window).scroll();
 			$(window).resize();
 
-			$el.fadeOut('fast', _destroy);
+			$el.fadeOut('slow', _destroy);
 		}
 
 		var _destroy = function() {
+			return;
 			// Remove the element
 			$el.off();
 			$el.remove();
