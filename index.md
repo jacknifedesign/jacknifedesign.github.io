@@ -55,7 +55,6 @@ Run `grunt` on the src folder to generate the dist files.
 
 ### Preloaders
 - * [Preload](preload)
-- * [Preload Item](preload.item)
 
 ### Tables
 - [Table](table)
